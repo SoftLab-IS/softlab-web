@@ -1,0 +1,16 @@
+2014/05/24 22:04:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii/default/index".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/default/ind...')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=gii/default/index
+---
+2014/05/24 22:04:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('gii')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=gii
+---
