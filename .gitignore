@@ -1,0 +1,6 @@
+web/assets/*
+!web/assets/.gitignore
+web/protected/runtime/*
+!web/protected/runtime/.gitignore
+web/protected/data/*.db
+
