@@ -11,7 +11,9 @@ Ovo je portal organizacije Softlab rađen koristeći Yii framework.
 ### Članovi tima izrade
 * igolub
 * arekx
+* ITesic
 
 ### Članovi tima održavanja
 * igolub
 * arekx
+* ITesic
