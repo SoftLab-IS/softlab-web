@@ -30,7 +30,9 @@ $conf->mergeWith(
 		*/
 	),
 	
-	
+	'params'=>array(
+		'debugfile' => '//layouts/debug-itesic',
+	),
 	// Dodaj svoja podesavanja ovdje, ako su ista kao u main.php onda ta iz main.php ce biti prepisana ovim
 	
     )

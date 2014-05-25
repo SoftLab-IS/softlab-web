@@ -396,3 +396,107 @@ Stack trace:
 #29 {main}
 REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php
 ---
+2014/05/25 21:08:11 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "//layouts/debug-arekx".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/main.php(33): CController->renderPartial('//layouts/debug...')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(206): COutputProcessor->run()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#8 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/column1.php(6): CBaseController->endContent()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(784): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#12 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(32): CController->render('index')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('')
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#21 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php
+---
+2014/05/25 21:08:15 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/main.php(33): CController->renderPartial(NULL)
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(206): COutputProcessor->run()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#8 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/column1.php(6): CBaseController->endContent()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(784): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#12 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(32): CController->render('index')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('')
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#21 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php
+---
+2014/05/25 21:08:51 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "//layouts/debug-arekx".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/main.php(33): CController->renderPartial('//layouts/debug...')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(206): COutputProcessor->run()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#8 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/column1.php(6): CBaseController->endContent()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(784): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#12 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(32): CController->render('index')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('')
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#21 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php
+---
+2014/05/25 21:08:51 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "//layouts/debug-arekx".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/main.php(33): CController->renderPartial('//layouts/debug...')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(206): COutputProcessor->run()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(300): CBaseController->endWidget('CContentDecorat...')
+#8 /home/alex/htdocs/softlab/softlab-web/web/themes/softlab-start/views/layouts/column1.php(6): CBaseController->endContent()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(784): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#12 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(32): CController->render('index')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('')
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('')
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#21 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php
+---

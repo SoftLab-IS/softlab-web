@@ -30,7 +30,7 @@
 
 <?php if (Yii::app()->params['debug']): ?>
 <!-- Ostaviti ovo zajedno sa if-om! -->
-<?php $this->renderPartial('//layouts/debug'); ?>
+<?php $this->renderPartial(Yii::app()->params['debugfile']); ?>
 <?php endif; ?>
 
 
