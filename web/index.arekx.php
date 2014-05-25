@@ -10,4 +10,9 @@ defined('YII_DEBUG') or define('YII_DEBUG',true);
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 
 require_once($yii);
-Yii::createWebApplication((new CConfiguration($config))->toArray())->run();
+$app = Yii::createWebApplication((new CConfiguration($config))->toArray());
+
+if ($app->params['debug'] == false)
+	die('Debug u parametrima nije true.');
+else
+	$app->run();

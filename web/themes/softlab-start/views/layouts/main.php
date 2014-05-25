@@ -20,6 +20,28 @@
 
 <body>
 
+
+
+
+
+
+
+
+
+<?php if (Yii::app()->params['debug']): ?>
+<!-- Ostaviti ovo zajedno sa if-om! -->
+<?php $this->renderPartial('//layouts/debug'); ?>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
+
 <div class="container" id="page">
 
 	<div id="header">
