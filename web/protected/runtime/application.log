@@ -500,3 +500,65 @@ Stack trace:
 #21 {main}
 REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php
 ---
+2014/05/26 00:01:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('gii')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('gii')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php
+---
+2014/05/26 00:01:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('gii')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('gii')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php
+---
+2014/05/26 00:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii/index".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/index')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=gii/index
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+---
+2014/05/26 00:02:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gii/index".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/index')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=gii/index
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+---
+2014/05/26 00:02:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('gii')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('gii')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php
+---
+2014/05/26 00:02:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('gii')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('gii')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.igolub.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php
+---
