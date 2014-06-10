@@ -22,18 +22,12 @@ $conf->mergeWith(
 			'allowAutoLogin'=>true,
 		),
 		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
-		// uncomment the following to use a MySQL database
-		/*
-		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=localhost;dbname=Softlab_db',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'arek',
 			'charset' => 'utf8',
 		),
-		*/
 	),
 	
 	'params'=>array(

@@ -562,3 +562,359 @@ Stack trace:
 REQUEST_URI=/alex/softlab/softlab-web/web/index.igolub.php?r=site/gii
 HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.igolub.php
 ---
+2014/06/10 18:46:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModule.php(103): CModule->getComponent('db')
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/gii/generators/model/ModelCode.php(60): CModule->__get('db')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CFormModel.php(39): ModelCode->init()
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/gii/CCodeGenerator.php(153): CFormModel->__construct()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/gii/CCodeGenerator.php(63): CCodeGenerator->prepare()
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionIndex()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('index')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#16 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=gii/model/index
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=gii/default/index
+---
+2014/06/10 19:33:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "2".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('2')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('2')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('links/go/2')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/2
+---
+2014/06/10 19:34:25 [error] [exception.CException] exception 'CException' with message 'GoController cannot find the requested view "404".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(782): CController->renderPartial('404', NULL, true)
+#1 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php(7): CController->render('404')
+#2 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php(19): GoController->action404()
+#3 [internal function]: GoController->actionTo(-1)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(GoController), Array)
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(GoController), Object(ReflectionMethod), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('to')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('links/go/to/2')
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/to/2
+---
+2014/06/10 19:34:49 [error] [exception.CException] exception 'CException' with message 'GoController cannot find the requested view "404".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:878
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(782): CController->renderPartial('404', NULL, true)
+#1 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php(7): CController->render('404')
+#2 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php(19): GoController->action404()
+#3 [internal function]: GoController->actionTo(-1)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(GoController), Array)
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(GoController), Object(ReflectionMethod), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('to')
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('links/go/to/2')
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#12 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#13 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/to/2
+---
+2014/06/10 19:37:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "to".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('to')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('to')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('links/go/to/2')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/to/2
+---
+2014/06/10 19:37:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index?to=2".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php:483
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(270): CController->missingAction('index?to=2')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('index?to=2')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('links/go/index?...')
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#4 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#5 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/index?to=2
+---
+2014/06/10 19:43:07 [error] [php] Undefined variable: username (/home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php:21)
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): GoController->runAction()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): GoController->runActionWithFilters()
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): GoController->run()
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#7 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CWebApplication->run()
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=links/go/index/user/username/to/marko-markovic
+in /home/alex/htdocs/softlab/softlab-web/web/protected/modules/links/controllers/GoController.php (21)
+in /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php (18)
+2014/06/10 20:17:42 [error] [exception.CException] exception 'CException' with message 'Property "Users.usersDataFid" is not defined.' in /home/alex/htdocs/softlab/softlab-web/web/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(145): CComponent->__get('usersDataFid')
+#1 /home/alex/htdocs/softlab/softlab-web/web/protected/components/UserIdentity.php(25): CActiveRecord->__get('usersDataFid')
+#2 /home/alex/htdocs/softlab/softlab-web/web/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(94): CModel->validate()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('login')
+#12 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#15 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/login
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/login
+---
+2014/06/10 20:32:05 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.username" is not defined.' in /home/alex/htdocs/softlab/softlab-web/web/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/helpers/CHtml.php(2529): CComponent->__get('username')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/helpers/CHtml.php(2252): CHtml::resolveValue(Object(LoginForm), 'username')
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/helpers/CHtml.php(1434): CHtml::activeInputField('text', Object(LoginForm), 'username', Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/widgets/CActiveForm.php(725): CHtml::activeTextField(Object(LoginForm), 'username', Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/protected/views/site/login.php(29): CActiveForm->textField(Object(LoginForm), 'username')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(869): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(782): CController->renderPartial('login', Array, true)
+#9 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(98): CController->render('login', Array)
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('login')
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#17 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#18 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/login
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php
+---
+2014/06/10 20:34:03 [error] [exception.CException] exception 'CException' with message 'Property "Users.username" is not defined.' in /home/alex/htdocs/softlab/softlab-web/web/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(145): CComponent->__get('username')
+#1 /home/alex/htdocs/softlab/softlab-web/web/protected/components/UserIdentity.php(28): CActiveRecord->__get('username')
+#2 /home/alex/htdocs/softlab/softlab-web/web/protected/models/LoginForm.php(54): UserIdentity->authenticate()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#6 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(94): CModel->validate()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('login')
+#12 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#14 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#15 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/login
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/login
+---
+2014/06/10 20:40:52 [error] [php] include(CHTTPException.php): failed to open stream: No such file or directory (/home/alex/htdocs/softlab/softlab-web/web/framework/YiiBase.php:427)
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(112): spl_autoload_call()
+#1 unknown(0): SiteController->actionLogout()
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): SiteController->runAction()
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#10 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CWebApplication->run()
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php (112)
+in /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php (18)
+2014/06/10 20:41:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Logout ključ nije postavljen.' in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php:112
+Stack trace:
+#0 [internal function]: SiteController->actionLogout('')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('logout')
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout')
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#10 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php
+---
+2014/06/10 20:42:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Logout ključ nije postavljen.' in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php:115
+Stack trace:
+#0 [internal function]: SiteController->actionLogout('')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('logout')
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout')
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#10 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+---
+2014/06/10 20:44:42 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Logout ključ nije postavljen.' in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php:115
+Stack trace:
+#0 [internal function]: SiteController->actionLogout('')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('logout')
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout')
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#10 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+---
+2014/06/10 20:45:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Logout ključ nije postavljen.' in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php:115
+Stack trace:
+#0 [internal function]: SiteController->actionLogout('')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('logout')
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout')
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#10 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+---
+2014/06/10 20:45:26 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Logout ključ nije postavljen.' in /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php:115
+Stack trace:
+#0 [internal function]: SiteController->actionLogout('')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CAction.php(108): ReflectionMethod->invokeArgs(Object(SiteController), Array)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(SiteController), Object(ReflectionMethod), Array)
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('logout')
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout')
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#9 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#10 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=site/logout
+---
+2014/06/10 21:05:44 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(667): CActiveRecord->getDbConnection()
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(1595): CActiveRecord->getCommandBuilder()
+#7 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#8 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/zii/widgets/CBaseListView.php(111): CDataProvider->getData()
+#12 /home/alex/htdocs/softlab/softlab-web/web/framework/zii/widgets/CListView.php(211): CBaseListView->init()
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(147): CListView->init()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(172): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/projects/views/default/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(126): require('/home/alex/htdo...')
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/alex/htdo...', Array, true)
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(869): CBaseController->renderFile('/home/alex/htdo...', Array, true)
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#20 /home/alex/htdocs/softlab/softlab-web/web/protected/modules/projects/controllers/DefaultController.php(128): CController->render('index', Array)
+#21 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): DefaultController->actionIndex()
+#22 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#23 /home/alex/htdocs/softlab/softlab-web/web/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#24 /home/alex/htdocs/softlab/softlab-web/web/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#25 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#26 /home/alex/htdocs/softlab/softlab-web/web/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#27 /home/alex/htdocs/softlab/softlab-web/web/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#28 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(291): CFilterChain->run()
+#29 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#30 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('')
+#31 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('projects')
+#32 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#33 /home/alex/htdocs/softlab/softlab-web/web/index.milankr.php(18): CApplication->run()
+#34 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.milankr.php?r=projects
+---
+2014/06/10 21:18:37 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModule.php(387): CDbConnection->init()
+#3 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(450): CModule->getComponent('db')
+#4 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(634): CApplication->getDb()
+#5 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(1428): CActiveRecord->getDbConnection()
+#6 /home/alex/htdocs/softlab/softlab-web/web/framework/db/ar/CActiveRecord.php(1517): CActiveRecord->getTableAlias(true)
+#7 /home/alex/htdocs/softlab/softlab-web/web/protected/components/UserIdentity.php(19): CActiveRecord->findByAttributes(Array)
+#8 /home/alex/htdocs/softlab/softlab-web/web/protected/models/LoginForm.php(54): UserIdentity->authenticate()
+#9 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#10 /home/alex/htdocs/softlab/softlab-web/web/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#11 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#12 /home/alex/htdocs/softlab/softlab-web/web/protected/controllers/SiteController.php(94): CModel->validate()
+#13 /home/alex/htdocs/softlab/softlab-web/web/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#14 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#15 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#16 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(282): CController->run('login')
+#18 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#19 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#20 /home/alex/htdocs/softlab/softlab-web/web/index.milankr.php(18): CApplication->run()
+#21 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.milankr.php?r=site/login
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.milankr.php?r=site/login
+---
+2014/06/10 21:19:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admincp".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('admincp')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=admincp
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=cv
+---
+2014/06/10 21:19:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admincp".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('admincp')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=admincp
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=admincp
+---
+2014/06/10 21:19:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admincp".' in /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/alex/htdocs/softlab/softlab-web/web/framework/web/CWebApplication.php(141): CWebApplication->runController('admincp')
+#1 /home/alex/htdocs/softlab/softlab-web/web/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /home/alex/htdocs/softlab/softlab-web/web/index.arekx.php(18): CApplication->run()
+#3 {main}
+REQUEST_URI=/alex/softlab/softlab-web/web/index.arekx.php?r=admincp
+HTTP_REFERER=http://localhost/alex/softlab/softlab-web/web/index.arekx.php?r=cv
+---

@@ -77,7 +77,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
-		$model=new LoginForm;
+		$model = new LoginForm;
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
@@ -101,9 +101,31 @@ class SiteController extends Controller
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
-	public function actionLogout()
+	public function actionLogout($key = '')
 	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		if (!Yii::app()->user->isGuest && !empty($key))
+		{
+			if ($key === Yii::app()->session['logoutKey'])
+			{
+				$user = Users::model()->findByPk(Yii::app()->session['userId']);
+				
+				if ($user != NULL)
+				{
+					$user->isLoggedIn = 0;
+					$user->logoutKey = '';
+					$user->save();
+					
+					$user->userDataF->lastLoginDate = mktime();
+					$user->userDataF->lastLoginIP = $_SERVER['REMOTE_ADDR'];
+					$user->userDataF->save();
+				}
+				
+				Yii::app()->user->logout();
+				$this->redirect(Yii::app()->homeUrl);
+			}
+		}
+		else
+			throw new CHttpException(403, 'Logout ključ nije postavljen.');
+
 	}
 }

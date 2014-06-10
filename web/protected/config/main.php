@@ -20,6 +20,15 @@ return array(
 	),
 
 	'modules'=>array(
+		'links',
+		'pastebin',
+		'finances',
+        'projects',
+        'blog',
+        'thinkingthursday',
+        'cv',
+        'admincp',
+	
 		// uncomment the following to enable the Gii tool
 		/*
 		'gii'=>array(
