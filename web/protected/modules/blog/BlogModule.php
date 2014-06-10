@@ -1,6 +1,6 @@
 <?php
 
-class BlogModule extends CWebModule
+class BlogModule extends WebModule
 {
 	public function init()
 	{
@@ -12,6 +12,11 @@ class BlogModule extends CWebModule
 			'blog.models.*',
 			'blog.components.*',
 		));
+	}
+	
+	public static function getConfigRules()
+	{
+		return array('allow', array('users' => '@'));
 	}
 
 	public function beforeControllerAction($controller, $action)

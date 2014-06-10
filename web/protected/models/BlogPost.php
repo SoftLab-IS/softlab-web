@@ -10,6 +10,7 @@
  * @property string $shortText
  * @property string $fullText
  * @property string $entryDate
+ * @property integer $isVisible
  * @property integer $authorId
  * @property string $tags
  *
@@ -36,13 +37,13 @@ class BlogPost extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('urlLink, name, shortText, fullText, authorId', 'required'),
-			array('authorId', 'numerical', 'integerOnly'=>true),
+			array('isVisible, authorId', 'numerical', 'integerOnly'=>true),
 			array('urlLink, name', 'length', 'max'=>255),
 			array('entryDate', 'length', 'max'=>21),
 			array('tags', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('blogPostId, urlLink, name, shortText, fullText, entryDate, authorId, tags', 'safe', 'on'=>'search'),
+			array('blogPostId, urlLink, name, shortText, fullText, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +72,7 @@ class BlogPost extends CActiveRecord
 			'shortText' => 'Short Text',
 			'fullText' => 'Full Text',
 			'entryDate' => 'Entry Date',
+			'isVisible' => 'Is Visible',
 			'authorId' => 'Author',
 			'tags' => 'Tags',
 		);
@@ -100,6 +102,7 @@ class BlogPost extends CActiveRecord
 		$criteria->compare('shortText',$this->shortText,true);
 		$criteria->compare('fullText',$this->fullText,true);
 		$criteria->compare('entryDate',$this->entryDate,true);
+		$criteria->compare('isVisible',$this->isVisible);
 		$criteria->compare('authorId',$this->authorId);
 		$criteria->compare('tags',$this->tags,true);
 

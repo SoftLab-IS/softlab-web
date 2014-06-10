@@ -1,6 +1,6 @@
 <?php
 
-class LinksModule extends CWebModule
+class LinksModule extends WebModule
 {
 	public function init()
 	{

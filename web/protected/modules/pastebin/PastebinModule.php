@@ -1,6 +1,6 @@
 <?php
 
-class PastebinModule extends CWebModule
+class PastebinModule extends WebModule
 {
 	public function init()
 	{

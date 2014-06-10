@@ -1,6 +1,6 @@
 <?php
 
-class AdmincpModule extends CWebModule
+class AdmincpModule extends WebModule
 {
 	public function init()
 	{

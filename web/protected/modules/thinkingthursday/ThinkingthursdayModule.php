@@ -1,6 +1,6 @@
 <?php
 
-class ThinkingthursdayModule extends CWebModule
+class ThinkingthursdayModule extends WebModule
 {
 	public function init()
 	{

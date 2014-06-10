@@ -42,6 +42,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'isVisible'); ?>
+		<?php echo $form->textField($model,'isVisible'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'authorId'); ?>
 		<?php echo $form->textField($model,'authorId'); ?>
 	</div>

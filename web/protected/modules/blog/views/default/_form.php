@@ -50,6 +50,12 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'isVisible'); ?>
+		<?php echo $form->textField($model,'isVisible'); ?>
+		<?php echo $form->error($model,'isVisible'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'authorId'); ?>
 		<?php echo $form->textField($model,'authorId'); ?>
 		<?php echo $form->error($model,'authorId'); ?>

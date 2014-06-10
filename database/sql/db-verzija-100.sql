@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 10, 2014 at 09:09 PM
+-- Generation Time: Jun 11, 2014 at 01:14 AM
 -- Server version: 5.5.37
 -- PHP Version: 5.4.4-14+deb7u10
 
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `sl_blog_post` (
   `shortText` text NOT NULL COMMENT 'Kratki (summary) tekst post-a.',
   `fullText` text NOT NULL COMMENT 'Puni tekst post-a.',
   `entryDate` bigint(21) DEFAULT NULL COMMENT 'UNIX timestamp post-a.',
+  `isVisible` int(1) NOT NULL DEFAULT '1',
   `authorId` int(11) NOT NULL COMMENT 'Strani kljuc koji predstavlja autora post-a.',
   `tags` text COMMENT 'Predstavlja tagove posta blog-a.',
   PRIMARY KEY (`blogPostId`),
@@ -156,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `sl_pastebin` (
   `pasteData` text NOT NULL COMMENT 'Podaci paste-a.',
   `canExpire` int(1) NOT NULL DEFAULT '0' COMMENT 'Vrijednost da li ovaj paste moze isteci:',
   `expireTimestamp` bigint(21) NOT NULL COMMENT 'UNIX timestamp kada paste istice.',
-  `isPrivate` int(11) NOT NULL,
+  `isPrivate` int(1) NOT NULL DEFAULT '0',
   `usersFid` int(11) NOT NULL COMMENT 'Strani kljuc za korisnika vlasnika paste-a.',
   `langFid` int(11) NOT NULL COMMENT 'ID jezika paste-a.',
   PRIMARY KEY (`pastebinId`),
@@ -415,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `sl_user_data` (
 --
 
 INSERT INTO `sl_user_data` (`userDataId`, `firstName`, `lastName`, `registrationDate`, `lastLoginDate`, `lastLoginIP`, `avatarUploadFid`, `facebookLink`, `twitterLink`, `linkedInLink`, `googlePlusLink`, `aboutMeLink`) VALUES
-(1, 'Admin', 'Administratovic', 0, 1402426795, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'Admin', 'Administratovic', 0, 1402439498, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -451,9 +452,9 @@ CREATE TABLE IF NOT EXISTS `sl_user_groups` (
 
 INSERT INTO `sl_user_groups` (`userGroupId`, `name`, `frontendAccess`, `backendAccess`) VALUES
 (1, 'Bez pristupa', '{}', '{}'),
-(2, 'Junior', '{}', '{}'),
+(2, 'Junior', '{}', '{\r\n"blog":\r\n[{"0":"allow","actions":["index","view","create"],"users":["@"]}]\r\n}'),
 (3, 'Senior', '{}', '{}'),
-(4, 'Administrator', '{"allow":"all"}', '{"allow":"all"}'),
+(4, 'Administrator', '{"allow":"all"}\r\n', '{"allow":"all"}'),
 (5, 'Moderator', '{}', '{}');
 
 -- --------------------------------------------------------

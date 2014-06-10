@@ -27,6 +27,7 @@ $this->menu=array(
 		'shortText',
 		'fullText',
 		'entryDate',
+		'isVisible',
 		'authorId',
 		'tags',
 	),

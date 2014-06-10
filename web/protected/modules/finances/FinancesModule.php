@@ -1,6 +1,6 @@
 <?php
 
-class FinancesModule extends CWebModule
+class FinancesModule extends WebModule
 {
 	public function init()
 	{

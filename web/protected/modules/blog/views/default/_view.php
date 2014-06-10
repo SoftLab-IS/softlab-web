@@ -29,11 +29,15 @@
 	<?php echo CHtml::encode($data->entryDate); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('isVisible')); ?>:</b>
+	<?php echo CHtml::encode($data->isVisible); ?>
+	<br />
+
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('authorId')); ?>:</b>
 	<?php echo CHtml::encode($data->authorId); ?>
 	<br />
 
-	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('tags')); ?>:</b>
 	<?php echo CHtml::encode($data->tags); ?>
 	<br />
