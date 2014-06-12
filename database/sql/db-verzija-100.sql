@@ -498,7 +498,7 @@ CREATE TABLE IF NOT EXISTS `sl_users` (
 --
 
 INSERT INTO `sl_users` (`usersId`, `email`, `password`, `salt`, `logoutKey`, `isActivated`, `isLoggedIn`, `userDataFid`, `userGroupFid`) VALUES
-(1, 'a@mi.in', '2176179c12e102627261bd40a5be8dce', 'skbvux29rpar', NULL, 1, 1, 1, 4);
+(1, 'a@dm.in', '2176179c12e102627261bd40a5be8dce', 'skbvux29rpar', NULL, 1, 1, 1, 4);
 
 -- --------------------------------------------------------
 
