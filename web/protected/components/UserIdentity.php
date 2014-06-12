@@ -47,10 +47,10 @@ class UserIdentity extends CUserIdentity
 					if (!empty($user->logoutKey))
 						Yii::app()->session["logoutKey"] = $user->logoutKey;
 					else
-						Yii::app()->session["logoutKey"] = md5($user->usersId . (microtime(true) + mktime()));
+						Yii::app()->session["logoutKey"] = md5($user->usersId . (microtime(true) + time()));
 				}
 				else
-					Yii::app()->session["logoutKey"] = md5($user->usersId . (microtime(true) + mktime()));
+					Yii::app()->session["logoutKey"] = md5($user->usersId . (microtime(true) + time()));
 				
 				Yii::app()->session["userDataId"] = $user->userDataFid;
 				Yii::app()->session["userGroupId"] = $user->userGroupFid;

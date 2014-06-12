@@ -50,8 +50,8 @@
 	
 	<p><?php echo Yii::app()->name; ?> | 
 
-	Vreme generisanja: <?php echo round(CLogger::getExecutionTime(),3); ?> s |
-	Memorija: <?php echo round(CLogger::getMemoryUsage() / 1048576, 2);?> MB | <?php echo CHtml::link("gii", array("gii/default"), array("target" => "_blank")); ?></p>
+	Vreme generisanja: <?php echo round(Yii::getLogger()->getExecutionTime(),3); ?> s |
+	Memorija: <?php echo round(Yii::getLogger()->getMemoryUsage() / 1048576, 2);?> MB | <?php echo CHtml::link("gii", array("gii/default"), array("target" => "_blank")); ?></p>
 	
 	<?php if (count($links) > 0): ?>
 	<p>
