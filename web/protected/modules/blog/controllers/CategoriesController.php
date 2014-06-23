@@ -73,7 +73,7 @@ class CategoriesController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->blogCategoryId));
 		}
-
+         
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -169,5 +169,12 @@ class CategoriesController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	public function categoryNames() {
+
+     	$criteria = new CDbCriteria;
+		$criteria->select = 'name';
+		$kategorija = Categorija::findAll($criteria);
+
 	}
 }

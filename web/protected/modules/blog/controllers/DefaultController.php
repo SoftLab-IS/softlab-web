@@ -45,6 +45,7 @@ class DefaultController extends Controller
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			
 		));
 	}
 
@@ -55,21 +56,27 @@ class DefaultController extends Controller
 	public function actionCreate()
 	{
 		$model=new BlogPost;
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['BlogPost']))
 		{
 			$model->attributes=$_POST['BlogPost'];
+			$model->authorId=Yii::app()->session["userId"];
+			$model->entryDate=date('dmy');
+			$model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&#]+@', '-', $model->name));
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->blogPostId));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'kategorija'=>BlogTags::model()->findAll(),
 		));
 	}
+	public function actionGetId(){
+	        echo 10;
+   }
 
 	/**
 	 * Updates a particular model.

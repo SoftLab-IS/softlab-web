@@ -12,7 +12,7 @@
  * @property string $entryDate
  * @property integer $isVisible
  * @property integer $authorId
- * @property string $tags
+ * @property checkBoxList $tags
  *
  * The followings are the available model relations:
  * @property Users $author
@@ -25,7 +25,7 @@ class BlogPost extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'sl_blog_post';
+		return 'sl_blog_post'; 
 	}
 
 	/**
@@ -36,11 +36,14 @@ class BlogPost extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('urlLink, name, shortText, fullText, authorId', 'required'),
-			array('isVisible, authorId', 'numerical', 'integerOnly'=>true),
+			array('name, shortText, fullText', 'required'),
+			array('isVisible', 'numerical', 'integerOnly'=>true),
 			array('urlLink, name', 'length', 'max'=>255),
 			array('entryDate', 'length', 'max'=>21),
 			array('tags', 'safe'),
+            array('name','length','min'=>4), 
+            array('fullText','length','min'=>50), 
+            array('tags','length','min'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('blogPostId, urlLink, name, shortText, fullText, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),

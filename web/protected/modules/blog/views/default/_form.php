@@ -14,16 +14,9 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'urlLink'); ?>
-		<?php echo $form->textField($model,'urlLink',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'urlLink'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -38,39 +31,79 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fullText'); ?>
-		<?php echo $form->textArea($model,'fullText',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->labelEx($model,'fullText'); ?><br />
+		<?php $this->widget('application.extensions.tinymce.ETinyMce',
+		array(
+		'model'=>$model,
+		'attribute'=>'fullText',
+		'editorTemplate'=>'full',
+		'htmlOptions'=>array('rows'=>6, 'cols'=>6, 'class'=>'tinymce'),
+		)); ?>
 		<?php echo $form->error($model,'fullText'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'entryDate'); ?>
-		<?php echo $form->textField($model,'entryDate',array('size'=>21,'maxlength'=>21)); ?>
+		<?php echo date('d.m.y'); ?>
+		
 		<?php echo $form->error($model,'entryDate'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row rememberMe">
+		<?php echo $form->checkBox($model,'isVisible'); ?>
 		<?php echo $form->labelEx($model,'isVisible'); ?>
-		<?php echo $form->textField($model,'isVisible'); ?>
 		<?php echo $form->error($model,'isVisible'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'authorId'); ?>
-		<?php echo $form->textField($model,'authorId'); ?>
+		<?php echo Yii::app()->session["name"]; ?>
 		<?php echo $form->error($model,'authorId'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row rememberMe">
 		<?php echo $form->labelEx($model,'tags'); ?>
-		<?php echo $form->textArea($model,'tags',array('rows'=>6, 'cols'=>50)); ?>
+		<br>
+		<?php $arrayName = array();
+			foreach ($kategorija as $key) {
+				array_push($arrayName, $key->tag);
+		} ?>
+		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
+		    'id'=>'showTags',
+		    'name'=>'nesto',
+		    'source'=>$arrayName,
+		    // additional javascript options for the autocomplete plugin
+		    'options'=>array(
+		        'minLength'=>'1',
+		        'select'=>"js:function(){
+		        	$('#setTags').append($('#showTags').val());
+		        	$('#setTags').append(', ');
+		        	this.value = '';
+		        }"
+		    ),
+		    'htmlOptions'=>array(
+		        'style'=>'height:20px;',
+		    ),
+		)); ?>
+		<br>
+		<?php echo $form->textArea($model,'tags',array(
+					'id'=>'setTags',
+					'rows'=>6, 'cols'=>40
+					)); ?>
+		</br>
+		<br>
+		</br>
+
+
 		<?php echo $form->error($model,'tags'); ?>
+		</br>
 	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
+<div>
 
+</div>
 <?php $this->endWidget(); ?>
-
 </div><!-- form -->

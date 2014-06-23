@@ -115,7 +115,7 @@ class SiteController extends Controller
 					$user->logoutKey = '';
 					$user->save();
 					
-					$user->userDataF->lastLoginDate = mktime();
+					$user->userDataF->lastLoginDate = time();
 					$user->userDataF->lastLoginIP = $_SERVER['REMOTE_ADDR'];
 					$user->userDataF->save();
 				}
