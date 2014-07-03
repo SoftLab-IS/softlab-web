@@ -119,12 +119,79 @@ class DefaultController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($query = '')
 	{
-		$dataProvider=new CActiveDataProvider('BlogPost');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		//if(isset($_GET['query'])){
+		$queries = explode(' ', $query);
+
+		if (count($queries) > 0)
+		{
+		$dataProvider = new CActiveDataProvider(BlogPost::model()->pretragaBloga($queries));
+		
+		/*$model = BlogPost::model()->pretragaBloga($queries)->findAll();
+
+		$sorted_model = array();
+
+		$maximum_relevance = 0;
+		$maximum_relevance_index = 0;
+		$i = 0;
+
+		while(count($model) > 0)
+		{
+			$relevance = 0;
+			$m = $model[$i];
+
+			foreach ($queries as $q) 
+			{
+				if (str_pos($q, $m->name) !=== false)
+				{
+					$relevance++;
+				}
+
+				if (str_pos($q, $m->shortText) !=== false)
+				{
+					$relevance++;
+				}
+
+				if (str_pos($q, $m->fullTexts) !=== false)
+				{
+					$relevance++;
+				}
+			}
+
+			if ($relevance > $maximum_relevance)
+			{
+				$maximum_relevance = $relevance;
+				$maximum_relevance_index = $i;
+			}
+
+			$i++;
+
+			if ($i >= count($model))
+			{
+				$sorted_model[] = $model[$maximum_relevance_index];
+				unset($model[$maximum_relevance_index]);
+				$maximum_relevance_index = 0;
+				$maximum_relevance = 0;
+				$i = 0;
+
+			}
+		}
+		$this->render('search',array(
+			'model'=>$model,
+			));
+		*/
+
+		}
+		else
+		{
+			$dataProvider = new CActiveDataProvider('BlogPost');
+		}
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+				));
+		
+		
 	}
 
 	/**

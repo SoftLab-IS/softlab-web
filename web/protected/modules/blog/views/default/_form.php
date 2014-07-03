@@ -12,7 +12,7 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
@@ -31,15 +31,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fullText'); ?><br />
+		<?php echo $form->labelEx($model,'fullTexts'); ?><br />
 		<?php $this->widget('application.extensions.tinymce.ETinyMce',
 		array(
 		'model'=>$model,
-		'attribute'=>'fullText',
+		'attribute'=>'fullTexts',
 		'editorTemplate'=>'full',
 		'htmlOptions'=>array('rows'=>6, 'cols'=>6, 'class'=>'tinymce'),
 		)); ?>
-		<?php echo $form->error($model,'fullText'); ?>
+		<?php echo $form->error($model,'fullTexts'); ?>
 	</div>
 
 	<div class="row">

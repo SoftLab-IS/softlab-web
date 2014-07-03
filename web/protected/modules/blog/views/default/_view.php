@@ -3,8 +3,9 @@
 /* @var $data BlogPost */
 ?>
 
-<div class="view">
 
+<div class="view">
+    
 	<b><?php echo CHtml::encode($data->getAttributeLabel('blogPostId')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->blogPostId), array('view', 'id'=>$data->blogPostId)); ?>
 	<br />
@@ -21,8 +22,8 @@
 	<?php echo CHtml::encode($data->shortText); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fullText')); ?>:</b>
-	<?php echo CHtml::encode($data->fullText); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('fullTexts')); ?>:</b>
+	<?php echo CHtml::encode($data->fullTexts); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('entryDate')); ?>:</b>

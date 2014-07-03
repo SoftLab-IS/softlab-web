@@ -36,17 +36,17 @@ class BlogPost extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, shortText, fullText', 'required'),
+			array('name, shortText, fullTexts', 'required'),
 			array('isVisible', 'numerical', 'integerOnly'=>true),
 			array('urlLink, name', 'length', 'max'=>255),
 			array('entryDate', 'length', 'max'=>21),
 			array('tags', 'safe'),
             array('name','length','min'=>4), 
-            array('fullText','length','min'=>50), 
+            array('fullTexts','length','min'=>50), 
             array('tags','length','min'=>1),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('blogPostId, urlLink, name, shortText, fullText, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
+			array('blogPostId, urlLink, name, shortText, fullTexts, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,7 +73,7 @@ class BlogPost extends CActiveRecord
 			'urlLink' => 'Url Link',
 			'name' => 'Name',
 			'shortText' => 'Short Text',
-			'fullText' => 'Full Text',
+			'fullTexts' => 'Full Text',
 			'entryDate' => 'Entry Date',
 			'isVisible' => 'Is Visible',
 			'authorId' => 'Author',
@@ -103,7 +103,7 @@ class BlogPost extends CActiveRecord
 		$criteria->compare('urlLink',$this->urlLink,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('shortText',$this->shortText,true);
-		$criteria->compare('fullText',$this->fullText,true);
+		$criteria->compare('fullTexts',$this->fullTexts,true);
 		$criteria->compare('entryDate',$this->entryDate,true);
 		$criteria->compare('isVisible',$this->isVisible);
 		$criteria->compare('authorId',$this->authorId);
@@ -123,5 +123,22 @@ class BlogPost extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	/**
+	* Return results of search
+	* @param string $q text of query
+	*/
+	public function pretragaBloga($q)
+	{
+		$criteria = $this->getDBCriteria();
+
+		foreach($q as $query)
+		{
+			$criteria->compare('name', $query, true, 'OR');
+			$criteria->compare('shortText', $query, true, 'OR');
+			$criteria->compare('fullTexts', $query, true, 'OR', true);
+		}
+
+		return $this;
 	}
 }

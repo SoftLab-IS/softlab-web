@@ -25,7 +25,7 @@ $this->menu=array(
 		'urlLink',
 		'name',
 		'shortText',
-		'fullText',
+		'fullTexts',
 		'entryDate',
 		'isVisible',
 		'authorId',
