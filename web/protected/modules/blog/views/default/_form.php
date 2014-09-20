@@ -60,12 +60,19 @@
 		<?php echo Yii::app()->session["name"]; ?>
 		<?php echo $form->error($model,'authorId'); ?>
 	</div>
+<div class="row rememberMe">
+	<p>Kategorije:</p>
+	<?php  $list = Chtml::listData($categories,'blogCategoryId','name');
+	 		echo CHtml::checkBoxList('Categories',
+                         $selected_Array=array(),
+                         $list); ?>
 
+</div>	
 	<div class="row rememberMe">
 		<?php echo $form->labelEx($model,'tags'); ?>
 		<br>
 		<?php $arrayName = array();
-			foreach ($kategorija as $key) {
+			foreach ($tags_name as $key) {
 				array_push($arrayName, $key->tag);
 		} ?>
 		<?php $this->widget('zii.widgets.jui.CJuiAutoComplete',array(
@@ -77,7 +84,7 @@
 		        'minLength'=>'1',
 		        'select'=>"js:function(){
 		        	$('#setTags').append($('#showTags').val());
-		        	$('#setTags').append(', ');
+		        	$('#setTags').append(',');
 		        	this.value = '';
 		        }"
 		    ),
@@ -93,8 +100,6 @@
 		</br>
 		<br>
 		</br>
-
-
 		<?php echo $form->error($model,'tags'); ?>
 		</br>
 	</div>

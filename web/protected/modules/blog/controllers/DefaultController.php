@@ -43,9 +43,12 @@ class DefaultController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		$userID = $this->loadModel($id);
+		$userData = Users::model()->findByPk($userID->authorId);
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			
+			'autor'=>UserData::model()->findByPk($userData->userDataFid),
 		));
 	}
 
@@ -56,22 +59,38 @@ class DefaultController extends Controller
 	public function actionCreate()
 	{
 		$model=new BlogPost;
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['BlogPost']))
 		{
 			$model->attributes=$_POST['BlogPost'];
 			$model->authorId=Yii::app()->session["userId"];
-			$model->entryDate=date('dmy');
+			$model->entryDate=time();
+			
 			$model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&#]+@', '-', $model->name));
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->blogPostId));
+					{
+						//$this->redirect(array('view','id'=>$model->blogPostId));
+						if (isset($_POST['Categories'])) 
+						{
+							$jadi = $_POST['Categories'];
+							foreach($jadi as $checkbox_id)
+							{
+								$postInCategory = new BlogPostInCategory;
+    							$postInCategory->blogPostFid = $model->blogPostId;
+    							$postInCategory->blogCategoryFid = $checkbox_id;
+    							$postInCategory->save();
+    						}
+						}
+						$userID = $this->loadModel($model->blogPostId);
+					}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
-			'kategorija'=>BlogTags::model()->findAll(),
+			'tags_name'=>BlogTags::model()->findAll(),
+			'categories'=> BlogCategories::model()->findAll(),
 		));
 	}
 	public function actionGetId(){
@@ -99,6 +118,8 @@ class DefaultController extends Controller
 
 		$this->render('update',array(
 			'model'=>$model,
+			'tags_name'=>BlogTags::model()->findAll(),
+			'categories'=> BlogCategories::model()->findAll(),
 		));
 	}
 
@@ -109,6 +130,7 @@ class DefaultController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+        BlogPostInCategory::model()->deleteAll('blogPostFid = ?',array($id));
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -121,77 +143,49 @@ class DefaultController extends Controller
 	 */
 	public function actionIndex($query = '')
 	{
-		//if(isset($_GET['query'])){
+		
+		$postNumbers[] = null;
 		$queries = explode(' ', $query);
+		$pagination = new CDbCriteria;
+		$count = BlogPost::model()->count($pagination);
+		$pages=new CPagination($count);
+    	$pages->pageSize=10;
+	    $pages->applyLimit($pagination);
+		$model = BlogPost::model()->pretragaBloga($queries)->findAll();
+		foreach ($model as $key) {
+			$authorID[]=Users::model()->findByPk($key->authorId);
+		}
 
-		if (count($queries) > 0)
-		{
-		$dataProvider = new CActiveDataProvider(BlogPost::model()->pretragaBloga($queries));
+		foreach ($authorID as $korisnik) {
+			$authorData[] = UserData::model()->findByPk($korisnik->userDataFid);
+		}
+
 		
-		/*$model = BlogPost::model()->pretragaBloga($queries)->findAll();
 
-		$sorted_model = array();
+		$all_categories = BlogPost::model()->with('slBlogCategories')->findAll();
+		if(isset($_GET['query'])){
+			$this->render('blogSearch',array(
+					"categories" => BlogCategories::model()->findAll(),
+					"tags" => BlogTags::model()->findAll(),
+					"models" => $model,
+					"author" => $authorData,
+					"real_categories" => $all_categories,
+					"pages" => $pages,
+					
 
-		$maximum_relevance = 0;
-		$maximum_relevance_index = 0;
-		$i = 0;
-
-		while(count($model) > 0)
-		{
-			$relevance = 0;
-			$m = $model[$i];
-
-			foreach ($queries as $q) 
-			{
-				if (str_pos($q, $m->name) !=== false)
-				{
-					$relevance++;
-				}
-
-				if (str_pos($q, $m->shortText) !=== false)
-				{
-					$relevance++;
-				}
-
-				if (str_pos($q, $m->fullTexts) !=== false)
-				{
-					$relevance++;
-				}
-			}
-
-			if ($relevance > $maximum_relevance)
-			{
-				$maximum_relevance = $relevance;
-				$maximum_relevance_index = $i;
-			}
-
-			$i++;
-
-			if ($i >= count($model))
-			{
-				$sorted_model[] = $model[$maximum_relevance_index];
-				unset($model[$maximum_relevance_index]);
-				$maximum_relevance_index = 0;
-				$maximum_relevance = 0;
-				$i = 0;
-
-			}
-		}
-		$this->render('search',array(
-			'model'=>$model,
-			));
-		*/
-
-		}
-		else
-		{
-			$dataProvider = new CActiveDataProvider('BlogPost');
-		}
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
 				));
-		
-		
+
+		}else{
+			$this->render('index',array(
+			"categories" => BlogCategories::model()->findAll(),
+			"tags" => BlogTags::model()->findAll(),
+			"posts" => $model,
+			"author" => $authorData,
+			"real_categories" => $all_categories,
+			"pages" => $pages,
+			));
+
+		}
 	}
 
 	/**

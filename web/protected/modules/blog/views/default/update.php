@@ -18,4 +18,6 @@ $this->menu=array(
 
 <h1>Update BlogPost <?php echo $model->blogPostId; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,	
+	'tags_name'=>$tags_name,
+	'categories'=>$categories)); ?>

@@ -16,19 +16,21 @@ $this->menu=array(
 );
 ?>
 
-<h1>View BlogPost #<?php echo $model->blogPostId; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'blogPostId',
-		'urlLink',
-		'name',
-		'shortText',
-		'fullTexts',
-		'entryDate',
-		'isVisible',
-		'authorId',
-		'tags',
-	),
-)); ?>
+<h1><?php echo $model->name; ?></h1>
+<div class="fullText">
+<?php echo $model->shortText; ?>
+</div>
+<div class="fullText">
+<?php echo $model->fullTexts; ?>
+</div>
+<div class="fullText">
+	<div class="blogPostView">Autor Posta: <?php echo CHtml::link($autor->firstName . " ". $autor->lastName, 'index.radans.php?r=admincp/users/view&id='. $model->authorId); ?></div>
+	<div class="blogPostDate">Datum postavljanja: <?php echo date('H:m:i d.m.Y', $model->entryDate); ?></div>
+	<div>Tagovi:<?php $tagovi = explode(",", $model->tags);
+			foreach ($tagovi as $key) {
+				echo CHtml::link($key, Yii::app()->createUrl('blog/list/tag',array(
+                                                         'name'=>$key,
+                                                         ))) . " ";
+			}
+			 ?> </div>
+</div>

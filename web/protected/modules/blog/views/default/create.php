@@ -15,4 +15,6 @@ $this->menu=array(
 
 <h1>Create BlogPost</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'kategorija'=>$kategorija)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,
+	'tags_name'=>$tags_name,
+	'categories'=>$categories)); ?>

@@ -22,7 +22,7 @@
 	<?php echo CHtml::encode($data->shortText); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fullTexts')); ?>:</b>
+	<b><?php echo $data->getAttributeLabel('fullTexts'); ?>:</b>
 	<?php echo CHtml::encode($data->fullTexts); ?>
 	<br />
 

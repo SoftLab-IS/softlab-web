@@ -13,6 +13,7 @@
  * @property integer $isVisible
  * @property integer $authorId
  * @property checkBoxList $tags
+ * @property string $nesto
  *
  * The followings are the available model relations:
  * @property Users $author
@@ -20,6 +21,7 @@
  */
 class BlogPost extends CActiveRecord
 {
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -44,6 +46,7 @@ class BlogPost extends CActiveRecord
             array('name','length','min'=>4), 
             array('fullTexts','length','min'=>50), 
             array('tags','length','min'=>1),
+            //array('kategorije', 'in','range'=>array(1,2)),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('blogPostId, urlLink, name, shortText, fullTexts, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
@@ -78,6 +81,7 @@ class BlogPost extends CActiveRecord
 			'isVisible' => 'Is Visible',
 			'authorId' => 'Author',
 			'tags' => 'Tags',
+			//'kategorije'=> 'Categories',
 		);
 	}
 
@@ -130,15 +134,20 @@ class BlogPost extends CActiveRecord
 	*/
 	public function pretragaBloga($q)
 	{
-		$criteria = $this->getDBCriteria();
+		$criteria = new CDbCriteria;
 
 		foreach($q as $query)
 		{
-			$criteria->compare('name', $query, true, 'OR');
-			$criteria->compare('shortText', $query, true, 'OR');
+			$criteria->compare('name', $query, true, 'OR', true);
+			$criteria->compare('shortText', $query, true, 'OR', true);
 			$criteria->compare('fullTexts', $query, true, 'OR', true);
 		}
+		$criteria->mergeWith(array(
+			'condition' => $this->tableAlias . '.isVisible = 1',                    
+		));
+		$this->getDBCriteria()->mergeWith($criteria);
 
 		return $this;
 	}
 }
+
