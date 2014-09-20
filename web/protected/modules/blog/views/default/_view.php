@@ -22,8 +22,8 @@
 	<?php echo CHtml::encode($data->shortText); ?>
 	<br />
 
-	<b><?php echo $data->getAttributeLabel('fullTexts'); ?>:</b>
-	<?php echo CHtml::encode($data->fullTexts); ?>
+	<b><?php echo $data->getAttributeLabel('fullArticle'); ?>:</b>
+	<?php echo CHtml::encode($data->fullArticle); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('entryDate')); ?>:</b>

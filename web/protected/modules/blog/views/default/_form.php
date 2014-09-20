@@ -31,15 +31,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'fullTexts'); ?><br />
+		<?php echo $form->labelEx($model,'fullArticle'); ?><br />
 		<?php $this->widget('application.extensions.tinymce.ETinyMce',
 		array(
 		'model'=>$model,
-		'attribute'=>'fullTexts',
+		'attribute'=>'fullArticle',
 		'editorTemplate'=>'full',
 		'htmlOptions'=>array('rows'=>6, 'cols'=>6, 'class'=>'tinymce'),
 		)); ?>
-		<?php echo $form->error($model,'fullTexts'); ?>
+		<?php echo $form->error($model,'fullArticle'); ?>
 	</div>
 
 	<div class="row">

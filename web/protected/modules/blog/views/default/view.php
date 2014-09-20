@@ -21,7 +21,7 @@ $this->menu=array(
 <?php echo $model->shortText; ?>
 </div>
 <div class="fullText">
-<?php echo $model->fullTexts; ?>
+<?php echo $model->fullArticle; ?>
 </div>
 <div class="fullText">
 	<div class="blogPostView">Autor Posta: <?php echo CHtml::link($autor->firstName . " ". $autor->lastName, 'index.radans.php?r=admincp/users/view&id='. $model->authorId); ?></div>
