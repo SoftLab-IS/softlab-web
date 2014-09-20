@@ -38,18 +38,18 @@ class BlogPost extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, shortText, fullTexts', 'required'),
+			array('name, shortText, fullArticle', 'required'),
 			array('isVisible', 'numerical', 'integerOnly'=>true),
 			array('urlLink, name', 'length', 'max'=>255),
 			array('entryDate', 'length', 'max'=>21),
 			array('tags', 'safe'),
             array('name','length','min'=>4), 
-            array('fullTexts','length','min'=>50), 
+            array('fullArticle','length','min'=>50), 
             array('tags','length','min'=>1),
             //array('kategorije', 'in','range'=>array(1,2)),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('blogPostId, urlLink, name, shortText, fullTexts, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
+			array('blogPostId, urlLink, name, shortText, fullArticle, entryDate, isVisible, authorId, tags', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,7 +76,7 @@ class BlogPost extends CActiveRecord
 			'urlLink' => 'Url Link',
 			'name' => 'Name',
 			'shortText' => 'Short Text',
-			'fullTexts' => 'Full Text',
+			'fullArticle' => 'Full Text',
 			'entryDate' => 'Entry Date',
 			'isVisible' => 'Is Visible',
 			'authorId' => 'Author',
@@ -107,7 +107,7 @@ class BlogPost extends CActiveRecord
 		$criteria->compare('urlLink',$this->urlLink,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('shortText',$this->shortText,true);
-		$criteria->compare('fullTexts',$this->fullTexts,true);
+		$criteria->compare('fullArticle',$this->fullArticle,true);
 		$criteria->compare('entryDate',$this->entryDate,true);
 		$criteria->compare('isVisible',$this->isVisible);
 		$criteria->compare('authorId',$this->authorId);
@@ -140,7 +140,7 @@ class BlogPost extends CActiveRecord
 		{
 			$criteria->compare('name', $query, true, 'OR', true);
 			$criteria->compare('shortText', $query, true, 'OR', true);
-			$criteria->compare('fullTexts', $query, true, 'OR', true);
+			$criteria->compare('fullArticle', $query, true, 'OR', true);
 		}
 		$criteria->mergeWith(array(
 			'condition' => $this->tableAlias . '.isVisible = 1',                    
