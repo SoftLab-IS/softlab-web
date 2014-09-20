@@ -4,4 +4,8 @@ web/protected/runtime/*
 web/.htaccess
 !web/protected/runtime/.gitignore
 web/protected/data/*.db
+.DS_Store
+._.DS_Store
+.sublime-project
+.sublime-workspace
 
