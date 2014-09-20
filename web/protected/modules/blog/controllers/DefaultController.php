@@ -147,10 +147,13 @@ class DefaultController extends Controller
 		$postNumbers[] = null;
 		$queries = explode(' ', $query);
 		$pagination = new CDbCriteria;
+
 		$count = BlogPost::model()->count($pagination);
-		$pages= new CPagination($count);
+
+		$pages = new CPagination($count);
     	$pages->pageSize = 10;
 	    $pages->applyLimit($pagination);
+
 		$model = BlogPost::model()->pretragaBloga($queries)->findAll($pagination);
 
 		$authorID = array();
@@ -168,7 +171,8 @@ class DefaultController extends Controller
 		
 
 		$all_categories = BlogPost::model()->with('slBlogCategories')->findAll();
-		if(isset($_GET['query'])){
+
+		if(isset($_GET['query'])) {
 			$this->render('blogSearch',array(
 					"categories" => BlogCategories::model()->findAll(),
 					"tags" => BlogTags::model()->findAll(),
@@ -180,7 +184,7 @@ class DefaultController extends Controller
 
 				));
 
-		}else{
+		} else {
 			$this->render('index',array(
 			"categories" => BlogCategories::model()->findAll(),
 			"tags" => BlogTags::model()->findAll(),
