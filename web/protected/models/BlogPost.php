@@ -8,7 +8,7 @@
  * @property string $urlLink
  * @property string $name
  * @property string $shortText
- * @property string $fullText
+ * @property string $fullArticle
  * @property string $entryDate
  * @property integer $isVisible
  * @property integer $authorId

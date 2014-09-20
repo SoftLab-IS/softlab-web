@@ -46,7 +46,7 @@ $this->menu=array(
 <?php echo $model->shortText; ?>
 </br>
 <br>
-<?php echo $model->fullTexts; ?>
+<?php echo $model->fullArticle; ?>
 </br>
 <h8>Post je u kategorijama:</h8>
 <?php 

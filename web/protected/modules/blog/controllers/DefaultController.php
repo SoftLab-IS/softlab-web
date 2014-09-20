@@ -148,10 +148,10 @@ class DefaultController extends Controller
 		$queries = explode(' ', $query);
 		$pagination = new CDbCriteria;
 		$count = BlogPost::model()->count($pagination);
-		$pages=new CPagination($count);
-    	$pages->pageSize=10;
+		$pages= new CPagination($count);
+    	$pages->pageSize = 10;
 	    $pages->applyLimit($pagination);
-		$model = BlogPost::model()->pretragaBloga($queries)->findAll();
+		$model = BlogPost::model()->pretragaBloga($queries)->findAll($pagination);
 
 		$authorID = array();
 
