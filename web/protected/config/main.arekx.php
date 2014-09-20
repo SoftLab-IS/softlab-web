@@ -25,7 +25,7 @@ $conf->mergeWith(
 			'connectionString' => 'mysql:host=localhost;dbname=Softlab_db',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'arek',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 	),

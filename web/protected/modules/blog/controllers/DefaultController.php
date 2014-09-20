@@ -152,9 +152,14 @@ class DefaultController extends Controller
     	$pages->pageSize=10;
 	    $pages->applyLimit($pagination);
 		$model = BlogPost::model()->pretragaBloga($queries)->findAll();
+
+		$authorID = array();
+
 		foreach ($model as $key) {
 			$authorID[]=Users::model()->findByPk($key->authorId);
 		}
+
+		$authorData = array();
 
 		foreach ($authorID as $korisnik) {
 			$authorData[] = UserData::model()->findByPk($korisnik->userDataFid);
