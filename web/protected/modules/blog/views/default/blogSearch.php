@@ -40,7 +40,7 @@ foreach($models as $model) : ?>
 <h3><?php echo CHtml::link($model->name, Yii::app()->createUrl("blog/default/view", array('id' => $model->blogPostId))); ?></h3>
  <br>
 <?php echo $model->shortText; ?>
-<?php echo $model->fullTexts; ?>
+<?php echo $model->fullArticle; ?>
 </br>
 <h8>Post je u kategorijama:</h8>
 <?php 
