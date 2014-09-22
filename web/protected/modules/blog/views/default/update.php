@@ -20,4 +20,5 @@ $this->menu=array(
 
 <?php $this->renderPartial('_form', array('model'=>$model,	
 	'tags_name'=>$tags_name,
-	'categories'=>$categories)); ?>
+	'categories'=>$categories,
+	'selectedCategories' => $selectedCategories)); ?>

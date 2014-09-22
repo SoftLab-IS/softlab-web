@@ -17,6 +17,7 @@ $this->breadcrumbs=array(
 	</div>
 
 <?php $this->endWidget(); ?>
+<br> Rezultati za pretragu: <?php echo $query; ?>
 <div class="right">
 	<div>
 	    <p>Kategorije</p>
@@ -40,15 +41,17 @@ foreach($models as $model) : ?>
 <h3><?php echo CHtml::link($model->name, Yii::app()->createUrl("blog/default/view", array('id' => $model->blogPostId))); ?></h3>
  <br>
 <?php echo $model->shortText; ?>
+</br>
+<br>
 <?php echo $model->fullArticle; ?>
 </br>
 <h8>Post je u kategorijama:</h8>
 <?php 
 		$s = 0;
-		while($real_categories[$s]->name != $model->name){
+		while($blogInCategories[$s]->name != $model->name){
 			$s++;
 		}
-		foreach ($real_categories[$s]->slBlogCategories as $cat) {
+		foreach ($blogInCategories[$s]->slBlogCategories as $cat) {
 			 echo CHtml::link($cat->name,Yii::app()->createUrl('blog/list/category',array('id' => $cat->blogCategoryId))) . " ";
 		}
 	?>
@@ -63,6 +66,15 @@ foreach($models as $model) : ?>
 	
 </div>
     <?php endforeach;?>
-  <?php $this->widget('CLinkPager', array(
-    'pages' => $pages,
-)) ?>
+    <br>
+  <?php 
+  		$this->widget('CLinkPager', array(
+  	    	'pages' => $pages,
+  	    	'maxButtonCount' => 7,
+  	        'firstPageLabel' => '1',
+  	        'prevPageLabel'  => '<',
+  	        'nextPageLabel'  => '>',
+  	 		'header' => '',
+  		));
+ ?>
+ </br>

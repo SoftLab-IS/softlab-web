@@ -1,12 +1,12 @@
 <div id="user">
-	<div>Ime i Prezime: <?php echo $autor->firstName. " ". $autor->lastName;?></div>
-	<div>Na mrezi bio: <?php echo date("d.m.y h:m",$autor->lastLoginDate); ?></div>
+	<div>Ime i Prezime: <?php echo $author->firstName. " ". $author->lastName;?></div>
+	<div>Na mrezi bio: <?php echo date("d.m.y h:m",$author->lastLoginDate); ?></div>
 	<div>Ukupno postova: <?php echo count($data); ?></div>
-	<div class="social"><a href="<?php echo $autor->facebookLink; ?>" target="_blank">facebook</a> 
-		<a href="<?php echo $autor->twitterLink; ?>" target="_blank">twitter</a>
-		<a href="<?php echo $autor->linkedInLink; ?>" target="_blank">LinkedIn</a>
-		<a href="<?php echo $autor->googlePlusLink; ?>" target="_blank">Google Plus</a>
-		<a href="<?php echo $autor->aboutMeLink; ?>" target="_blank">About Me</a>
+	<div class="social"><a href="<?php echo $author->facebookLink; ?>" target="_blank">facebook</a> 
+		<a href="<?php echo $author->twitterLink; ?>" target="_blank">twitter</a>
+		<a href="<?php echo $author->linkedInLink; ?>" target="_blank">LinkedIn</a>
+		<a href="<?php echo $author->googlePlusLink; ?>" target="_blank">Google Plus</a>
+		<a href="<?php echo $author->aboutMeLink; ?>" target="_blank">About Me</a>
 	</div>
 </div>
 <img id="avatar" src="<?php echo $avatar->fullpath;?>" />
@@ -21,7 +21,7 @@
 <?php echo $userData->shortText; ?>
 </div>
 <div class="fullText">
-<?php echo $userData->fullTexts; ?>
+<?php echo $userData->fullArticle; ?>
 </div>
 <div class="fullText">
 	<div class="blogPostDate">
@@ -34,4 +34,16 @@
 			 ?> </div>
 </div>
 <?php endforeach;?>
+   <br>
+  <?php 
+  		$this->widget('CLinkPager', array(
+  	    	'pages' => $pages,
+  	    	'maxButtonCount' => 7,
+  	        'firstPageLabel' => '1',
+  	        'prevPageLabel'  => '<',
+  	        'nextPageLabel'  => '>',
+  	 		'header' => '',
+  		));
+ ?>
+ </br>
 </div>

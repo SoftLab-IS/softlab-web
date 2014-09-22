@@ -62,10 +62,10 @@
 	</div>
 <div class="row rememberMe">
 	<p>Kategorije:</p>
-	<?php  $list = Chtml::listData($categories,'blogCategoryId','name');
-	 		echo CHtml::checkBoxList('Categories',
-                         $selected_Array=array(),
-                         $list); ?>
+	<?php
+	$selected_type_list = array_keys(CHtml::listData($selectedCategories,'blogCategoryId','name'));
+	$list = Chtml::listData($categories,'blogCategoryId','name');
+	echo CHtml::checkBoxList('Categories',$selected_type_list,$list); ?>
 
 </div>	
 	<div class="row rememberMe">

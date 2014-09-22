@@ -1,3 +1,18 @@
+#user {
+	width: 80%;
+	float: left;
+}
+#avatar {
+	width: 150px;
+	height: 150px;
+	float: right;
+}
+
+#page ul.yiiPager .first,
+#page ul.yiiPager .last
+{
+        display: inline;
+}
 body
 {
 	margin: 0;

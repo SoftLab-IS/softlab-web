@@ -45,19 +45,31 @@ class ListController extends Controller
 
 	public function actionAuthor($id)
 	{
-		$autor = UserData::model()->findByPk($id);
-		$avatar = Uploads::model()->findByPk($autor->avatarUploadFid);
+		$author = UserData::model()->findByPk($id);
+		
+		$avatar = Uploads::model()->findByPk($author->avatarUploadFid);
+		if (count($avatar->fullpath) < 0 ) {
+			$avatar->fullpath = "https://scontent-a-fra.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/10300079_10203928303478898_1346836797229236029_n.jpg?oh=c20aa5ab1f04362296fa1085475c7a17&oe=54873599";
+		}
 		$q = new CDbCriteria();
-		$q->addSearchCondition('authorId',$id);
-		$data = BlogPost::model()->findAll($q);
+
+		$pagination = new CDbCriteria;
+		$count = BlogPost::model()->count($pagination);
+		$pages = new CPagination($count);
+    	$pages->pageSize = 10;
+	    $pages->applyLimit($pagination);
+	    $pages->getPageCount();
+
+		$data = BlogPost::model()->userPosts($id)->findAll($pagination);
 		if($data === null){
 			throw new CHttpException(404,'The requested page does not exist.');
 		}else
 		{
 		$this->render('author',array(
 				'data'=>  $data,
-				'autor'=>$autor,
+				'author'=>$author,
 				'avatar'=> $avatar,
+				"pages" => $pages,
 					));
 		}
 	}
@@ -66,20 +78,34 @@ class ListController extends Controller
 
 		$critera = new CDbCriteria();
 		$critera -> addSearchCondition("blogCategoryFid",$id);
+
+		$pagination = new CDbCriteria;
+		$count = BlogPost::model()->count($pagination);
+		$pages = new CPagination($count);
+    	$pages->pageSize = 10;
+	    $pages->applyLimit($pagination);
+	    $pages->getPageCount();
+
 		$blogInCategories = BlogPostInCategory::model()->findAll($critera);
+		$category = BlogCategories::model()->findByPk($id);
 		$i = 0;
 		foreach ($blogInCategories as $key) {
 			$IDs[$i] = $key->blogPostFid;
 			$i++;
 		}
-
 		$postsInBlog = BlogPost::model()->findAllByPk($IDs);
 		foreach ($postsInBlog as $key) {
 			$authorID=UserData::model()->findByPk($key->authorId);
 		}
-		$this->render('category',array(
-			'categories'=> $postsInBlog,
-			'author' => $authorID,
-			));
+		if($blogInCategories === null){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}else
+		{
+			$this->render('category',array(
+					'categories'=> $postsInBlog,
+					'author' => $authorID,
+					'category' => $category,
+					'pages' => $pages,
+					));}
 	}
 }

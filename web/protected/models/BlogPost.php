@@ -132,7 +132,7 @@ class BlogPost extends CActiveRecord
 	* Return results of search
 	* @param string $q text of query
 	*/
-	public function pretragaBloga($q)
+	public function blogSearch($q)
 	{
 		$criteria = new CDbCriteria;
 
@@ -147,6 +147,13 @@ class BlogPost extends CActiveRecord
 		));
 		$this->getDBCriteria()->mergeWith($criteria);
 
+		return $this;
+	}
+	
+	public function userPosts($id){
+		$q = new CDbCriteria();
+		$q->addSearchCondition('authorId',$id);
+		$data = BlogPost::model()->findAll($q);
 		return $this;
 	}
 }

@@ -70,6 +70,7 @@ class CategoriesController extends Controller
 		if(isset($_POST['BlogCategories']))
 		{
 			$model->attributes=$_POST['BlogCategories'];
+			$model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&]+@', '-', $model->name));
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->blogCategoryId));
 		}

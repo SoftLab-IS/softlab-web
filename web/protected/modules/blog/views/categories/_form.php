@@ -24,13 +24,6 @@
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'urlLink'); ?>
-		<?php echo $form->textField($model,'urlLink',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'urlLink'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

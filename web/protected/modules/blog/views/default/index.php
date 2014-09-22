@@ -51,10 +51,10 @@ $this->menu=array(
 <h8>Post je u kategorijama:</h8>
 <?php 
 		$s = 0;
-		while($real_categories[$s]->name != $model->name){
+		while($blogInCategories[$s]->name != $model->name){
 			$s++;
 		}
-		foreach ($real_categories[$s]->slBlogCategories as $cat) {
+		foreach ($blogInCategories[$s]->slBlogCategories as $cat) {
 			 echo CHtml::link($cat->name,Yii::app()->createUrl('blog/list/category',array('id' => $cat->blogCategoryId))) . " ";
 		}
 	?>
@@ -68,8 +68,18 @@ $this->menu=array(
 <br>
 </div>
     <?php endforeach;?>
-    <?php $this->widget('CLinkPager', array(
-    'pages' => $pages,
-)) ?>
 </div>
+ <br>
+ 	 <?php 
+  		$this->widget('CLinkPager', array(
+  	    	'pages' => $pages,
+  	    	'maxButtonCount' => 7,
+  	        'firstPageLabel' => '<<',
+            'prevPageLabel'  => '<',
+            'nextPageLabel'  => '>',
+            'lastPageLabel'  => '>>',
+  	 		'header' => '',
+  		));
+ ?>
+ </br>
 

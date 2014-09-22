@@ -43,12 +43,13 @@ class DefaultController extends Controller
 	 */
 	public function actionView($id)
 	{
-
+		$categories = BlogPost::model()->with('slBlogCategories')->findByPk($id);
 		$userID = $this->loadModel($id);
 		$userData = Users::model()->findByPk($userID->authorId);
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'autor'=>UserData::model()->findByPk($userData->userDataFid),
+			'categories' => $categories,
 		));
 	}
 
@@ -74,8 +75,8 @@ class DefaultController extends Controller
 						//$this->redirect(array('view','id'=>$model->blogPostId));
 						if (isset($_POST['Categories'])) 
 						{
-							$jadi = $_POST['Categories'];
-							foreach($jadi as $checkbox_id)
+							$categories = $_POST['Categories'];
+							foreach($categories as $checkbox_id)
 							{
 								$postInCategory = new BlogPostInCategory;
     							$postInCategory->blogPostFid = $model->blogPostId;
@@ -84,14 +85,9 @@ class DefaultController extends Controller
     						}
 						}
 						$userID = $this->loadModel($model->blogPostId);
+						echo "<meta http-equiv='refresh' content='0;url=".Yii::app()->createUrl('blog/default/view',array('id' => $model->blogPostId)) . "'/>";
 					}
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-			'tags_name'=>BlogTags::model()->findAll(),
-			'categories'=> BlogCategories::model()->findAll(),
-		));
 	}
 	public function actionGetId(){
 	        echo 10;
@@ -112,14 +108,31 @@ class DefaultController extends Controller
 		if(isset($_POST['BlogPost']))
 		{
 			$model->attributes=$_POST['BlogPost'];
-			if($model->save())
+			if($model->save()){	
+				if (isset($_POST['Categories'])) 
+					{
+						BlogPostInCategory::model()->deleteAll('blogPostFid = ?',array($id));
+						$categories = $_POST['Categories'];
+						foreach($categories as $checkbox_id)
+						{
+							$postInCategory = new BlogPostInCategory;
+    						$postInCategory->blogPostFid = $id;
+    						$postInCategory->blogCategoryFid = $checkbox_id;
+    						$postInCategory->save();
+    					}
+					}
 				$this->redirect(array('view','id'=>$model->blogPostId));
+			}
 		}
-
+		$q = new CDbCriteria;
+		$q -> compare('blogPostFid',$id);
+		$selectedCategories = BlogPost::model()->with('slBlogCategories')->findAll($q);
+		
 		$this->render('update',array(
 			'model'=>$model,
 			'tags_name'=>BlogTags::model()->findAll(),
 			'categories'=> BlogCategories::model()->findAll(),
+			'selectedCategories' => $selectedCategories[0]->slBlogCategories,
 		));
 	}
 
@@ -143,21 +156,18 @@ class DefaultController extends Controller
 	 */
 	public function actionIndex($query = '')
 	{
-		
-		$postNumbers[] = null;
 		$queries = explode(' ', $query);
+		
 		$pagination = new CDbCriteria;
-
-		$count = BlogPost::model()->count($pagination);
-
+		$count = BlogPost::model()->blogSearch($queries)->count($pagination);
 		$pages = new CPagination($count);
     	$pages->pageSize = 10;
 	    $pages->applyLimit($pagination);
+	    $pages->getPageCount();
 
-		$model = BlogPost::model()->pretragaBloga($queries)->findAll($pagination);
+		$model = BlogPost::model()->blogSearch($queries)->findAll($pagination);
 
 		$authorID = array();
-
 		foreach ($model as $key) {
 			$authorID[]=Users::model()->findByPk($key->authorId);
 		}
@@ -167,9 +177,6 @@ class DefaultController extends Controller
 		foreach ($authorID as $korisnik) {
 			$authorData[] = UserData::model()->findByPk($korisnik->userDataFid);
 		}
-
-		
-
 		$all_categories = BlogPost::model()->with('slBlogCategories')->findAll();
 
 		if(isset($_GET['query'])) {
@@ -178,10 +185,9 @@ class DefaultController extends Controller
 					"tags" => BlogTags::model()->findAll(),
 					"models" => $model,
 					"author" => $authorData,
-					"real_categories" => $all_categories,
+					"blogInCategories" => $all_categories,
 					"pages" => $pages,
-					
-
+					"query" => $query,
 				));
 
 		} else {
@@ -190,7 +196,7 @@ class DefaultController extends Controller
 			"tags" => BlogTags::model()->findAll(),
 			"posts" => $model,
 			"author" => $authorData,
-			"real_categories" => $all_categories,
+			"blogInCategories" => $all_categories,
 			"pages" => $pages,
 			));
 

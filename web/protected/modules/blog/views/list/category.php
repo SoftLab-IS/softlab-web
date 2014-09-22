@@ -1,3 +1,5 @@
+
+<h4>Pretraga za kategoriju <?php echo $category->name; ?></h4>
 <?php foreach ($categories as $userData): ?>
 <br></br>
 <br></br>
@@ -5,8 +7,8 @@
 <div class="fullText">
 <?php echo $userData->shortText; ?>
 </div>
-<div class="fullText">
-<?php echo $userData->fullTexts; ?>
+<div class="fullArticle">
+<?php echo $userData->fullArticle; ?>
 </div>
 <div class="fullText">
 	<div class="blogPostDate">

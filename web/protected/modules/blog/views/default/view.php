@@ -33,4 +33,7 @@ $this->menu=array(
                                                          ))) . " ";
 			}
 			 ?> </div>
+	<div>Kategorije: <?php foreach ($categories->slBlogCategories as $blogInCategories) {
+		 echo CHtml::link($blogInCategories->name,Yii::app()->createUrl('blog/list/category',array('id' => $blogInCategories->blogCategoryId))). " ";
+	} ?></div>
 </div>
