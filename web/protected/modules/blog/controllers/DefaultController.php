@@ -6,7 +6,7 @@ class DefaultController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
 
 	/**
 	 * @return array action filters
@@ -88,6 +88,12 @@ class DefaultController extends Controller
 						echo "<meta http-equiv='refresh' content='0;url=".Yii::app()->createUrl('blog/default/view',array('id' => $model->blogPostId)) . "'/>";
 					}
 		}
+		$this->render('update',array(
+			'model'=>$model,
+			'tags_name'=>BlogTags::model()->findAll(),
+			'categories'=> BlogCategories::model()->findAll(),
+			'selectedCategories' =>array(),
+		));
 	}
 	public function actionGetId(){
 	        echo 10;
@@ -108,6 +114,7 @@ class DefaultController extends Controller
 		if(isset($_POST['BlogPost']))
 		{
 			$model->attributes=$_POST['BlogPost'];
+			$model->entryDate=time();
 			if($model->save()){	
 				if (isset($_POST['Categories'])) 
 					{
@@ -126,13 +133,17 @@ class DefaultController extends Controller
 		}
 		$q = new CDbCriteria;
 		$q -> compare('blogPostFid',$id);
-		$selectedCategories = BlogPost::model()->with('slBlogCategories')->findAll($q);
-		
+		$selectedCategoriesUnChacked = BlogPost::model()->with('slBlogCategories')->findAll($q);
+		if (empty($selectedCategoriesUnChacked)) {
+			$selectedCategories = array();
+		}else{
+			$selectedCategories = $selectedCategoriesUnChacked[0]->slBlogCategories;
+		}
 		$this->render('update',array(
 			'model'=>$model,
 			'tags_name'=>BlogTags::model()->findAll(),
 			'categories'=> BlogCategories::model()->findAll(),
-			'selectedCategories' => $selectedCategories[0]->slBlogCategories,
+			'selectedCategories' => $selectedCategories,
 		));
 	}
 

@@ -1,22 +1,22 @@
+<div class="row">
+<div class="panel">
+	<h4>Pretraga za kategoriju <?php echo $category->name; ?></h4>
+</div>
 
-<h4>Pretraga za kategoriju <?php echo $category->name; ?></h4>
 <?php foreach ($categories as $userData): ?>
-<br></br>
-<br></br>
+<div class="panel">
 	<h4><?php echo $userData->name; ?></h4>
-<div class="fullText">
+<div >
 <?php echo $userData->shortText; ?>
 </div>
-<div class="fullArticle">
-<?php echo $userData->fullArticle; ?>
-</div>
-<div class="fullText">
-	<div class="blogPostDate">
-		<?php echo CHtml::link('Vidi Citav post', array('/blog/default/view','id'=>$userData->blogPostId)); ?>
-	</div>
-	<div class="blogPostView">
-		Autor Posta: <?php CHtml::link($author->firstName . " ". $author->lastName, array('/blog/list/category','id'=> $author->userDataId)); ?><br>
+<div>
+	<div>
+		Autor Posta: <?php CHtml::link($author->firstName . " ". $author->lastName, array('/blog/list/author','id'=> $author->userDataId)); ?><br>
 		Datum postavljanja: <?php echo date('H:m:i d.m.Y', $userData->entryDate); ?>
 	</div>
+	<div><?php echo CHtml::link('Vidi Citav post', array('/blog/default/view','id'=>$userData->blogPostId),array("class" => "button")); ?></div>
 </div>
+</div>
+	
 <?php endforeach;?>
+</div>

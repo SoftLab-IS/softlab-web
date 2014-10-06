@@ -2,14 +2,9 @@
 /* @var $this SiteController */
 /* @var $model ContactForm */
 /* @var $form CActiveForm */
-
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
 ?>
 
-<h1>Contact Us</h1>
+
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -19,9 +14,6 @@ $this->breadcrumbs=array(
 
 <?php else: ?>
 
-<p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
-</p>
 
 <div class="form">
 
@@ -32,8 +24,15 @@ If you have business inquiries or other questions, please fill out the following
 		'validateOnSubmit'=>true,
 	),
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+<br>
+	<div class="row panel">
+	<div class="large-3 columns">
+	<h1>Contact Us</h1>
+<p>
+If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+</p></div>
+	<div class="large-9 columns">
+		<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -75,11 +74,13 @@ If you have business inquiries or other questions, please fill out the following
 	<?php endif; ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Submit',array("class"=> "button")); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+	</div>
+</div>
 
 <?php endif; ?>

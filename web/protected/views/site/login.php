@@ -3,16 +3,7 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
 ?>
-
-<h1>Login</h1>
-
-<p>Please fill out the following form with your login credentials:</p>
-
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
@@ -22,8 +13,10 @@ $this->breadcrumbs=array(
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	
+<div class="row">
+	<div class="large-5 columns">
+	<br>
 	<div class="row">
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email'); ?>
@@ -34,9 +27,6 @@ $this->breadcrumbs=array(
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Mozete se ulogovat sa emailom: <kbd>a@dm.in</kbd> i lozinkom: <kbd>admin</kbd>.
-		</p>
 	</div>
 
 	<div class="row rememberMe">
@@ -46,8 +36,9 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('Login',array("class" => "button")); ?>
 	</div>
-
+</div>
 <?php $this->endWidget(); ?>
+<div class="large-5 columns">><?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/logo.png','',array('class'=>'logo')); ?></div>
 </div><!-- form -->

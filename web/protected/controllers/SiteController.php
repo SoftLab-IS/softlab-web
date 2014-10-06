@@ -128,4 +128,36 @@ class SiteController extends Controller
 			throw new CHttpException(403, 'Logout ključ nije postavljen.');
 
 	}
+	public function widgetSelection() {
+    $number = CHttpRequest::getParam('number');
+	$tags=CHttpRequest::getParam('tags');
+	$author=CHttpRequest::getParam('author');
+	$category=CHttpRequest::getParam('category');
+    if ($number == NULL) {
+    	$number = 5;
+    }
+    if ($category == NULL) {
+    	$widgetPosts = new CDbCriteria;
+    	$widgetPosts->limit = $number;
+   		$widgetPosts->compare('isVisible',1,true,'AND');
+    	$widgetPosts->compare('tags',$tags,true,'AND');
+    	$widgetPosts->compare('authorID',$author,true);
+    	$widgetPosts->order = 'entryDate DESC';
+    	$posts = BlogPost::model()->findAll($widgetPosts);
+    }else{
+       	$widgetPostsWithCategory = BlogCategories::model();
+       	$postsInCategory = $widgetPostsWithCategory->with (array(
+       		'slBlogPosts'=>array(
+       		'condition'=>'slBlogPosts.isVisible = 1',
+       		//'select' => 'slBlogPosts.isVisible = 1',
+       		'order'=>'slBlogPosts.entryDate DESC',
+       		)))->findByPK($category, array('limit'=>$number,'together'=>true));
+       	for ($i=0; $i < count($postsInCategory->slBlogPosts); $i++) { 
+       		$posts[$i] =  $postsInCategory->slBlogPosts[$i];
+       	}
+    }
+    return $posts;
+
+	}
+    
 }

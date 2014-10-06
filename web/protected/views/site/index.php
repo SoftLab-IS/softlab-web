@@ -1,20 +1,27 @@
 <?php
 /* @var $this SiteController */
-
-$this->pageTitle=Yii::app()->name;
 ?>
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
-
-<p>Congratulations! You have successfully created your Yii application.</p>
-
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+<div class="row abc">
+<div class="large-7 columns">
+<div class="row">
+<div class="large-6 columns"><?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/logo.png','',array('class'=>'logo')); ?></div>
+<div class="large-6 columns panel ">SoftLab je udruženje studenata sa velikom željom za konstantnim samounapređivanjem u
+ granama softverskog inžinjerstva. Ovo udruženje je osnovano 2013. godine na Elektrotehničkom 
+ fakultetu u Istočnom Sarajevu i počelo je kao ideja nekoliko studenata da se sastaju i rade neke
+  jednostavne projekte.
+<?php echo CHtml::link('Opsirnije', Yii::app()->createUrl("site/page", array('view' => 'about')),array('class' => 'button')); ?>
+ </div>
+</div>
+	<div class="row">
+		<div class="panel">
+			<h5>PRATITE NAŠE AKTIVNOSTI NA SOCIJALNIM MREŽAMA</h5>
+			<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/fb.png'), "https://www.facebook.com/softlab.is",array("class" => "social_networks"));?>
+			<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/gplus.png'), "https://plus.google.com/communities/104563510273658910802",array("class" => "social_networks"));?>
+			<?php echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/twitter.png'), "https://twitter.com/SoftLab_ISaraj",array("class" => "social_networks"));?>
+		</div>
+	</div>
+</div>
+<div class="large-4 columns widget"><?php
+$this->widget('application.components.PostWidget', array());
+ ?></div>
+</div>

@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="large-12 columns">
+    	<ul class="large-block-grid-3">
+    	<li>
+    	<div class="coolMenu">
+    		<img src="img/fb.png">
+    		<h5>Facebook</h5>
+    		<h6>Social Network</h6>
+    	</div>
+    	</li>
+    	<li>
+    	<div class="coolMenu">
+    		<img src="img/gplus.png">
+    		<h5>Google Plus</h5>
+    		<h6>Social Network</h6>
+    	</div>
+    	</li>
+    	<li>
+    	<div class="coolMenu">
+    		<img src="img/twitter.png">
+    		<h5>Twitter</h5>
+    		<h6>Social Network</h6>
+    	</div>
+    	</li>
+    </ul>
+    </div>

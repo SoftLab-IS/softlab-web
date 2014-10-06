@@ -7,7 +7,7 @@ require_once($yii);
 
 $app = Yii::createWebApplication($config);
 
-if ($app->params['debug'])
-	die('<meta http-equiv="content-type" content="text/html; charset=utf-8" />Ovaj index je za production verziju. Koristi index.githubnadimak.php i nemoj postavljati urlManager komponentu.<br />Ovo vidiš zato što je debug=true u parametrima u main.php.');
-else
+//if ($app->params['debug'])
+//	die('<meta http-equiv="content-type" content="text/html; charset=utf-8" />Ovaj index je za production verziju. Koristi index.githubnadimak.php i nemoj postavljati urlManager komponentu.<br />Ovo vidiš zato što je debug=true u parametrima u main.php.');
+//else
 	$app->run();

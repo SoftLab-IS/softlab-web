@@ -39,6 +39,7 @@ class ListController extends Controller
 		{
 				$this->render('tag',array(
 					'data'=> $data,
+					'tagName' => $name,
 					));}
 	}
 

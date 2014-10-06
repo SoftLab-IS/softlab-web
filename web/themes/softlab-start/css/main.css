@@ -1,0 +1,61 @@
+.myButton a:hover{
+	color: #0772b4;
+	background-color: white;
+
+}
+.myButton a{
+	font-size: 12px;
+	color: white;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #0772b4;
+}
+
+#avatar {
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+.social_networks:hover {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+filter: grayscale(100%);
+}
+
+
+.social_networks {
+-webkit-filter: grayscale(0%);
+-moz-filter: grayscale(0%);
+filter: grayscale(0%);
+	
+	
+}
+.search {
+	display:inline-block;
+}
+#page ul.yiiPager .first,
+#page ul.yiiPager .last
+{
+        display: inline;
+}
+.container {
+	background-image: url("../img/1.png");
+	background-position: center;
+	padding-bottom: 20px;
+}
+div.abc{
+	margin-top: 1.5rem;
+}
+nav.top-bar {
+text-align:center;
+background-color: #0772b4;
+}
+section.top-bar-section {
+display: inline-block;
+background-color: #0772b4;
+}
+section.top-bar-section a {
+display: inline-block;
+background-color: #0772b4;
+}
