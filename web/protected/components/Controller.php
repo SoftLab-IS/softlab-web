@@ -56,4 +56,5 @@ class Controller extends CController
 			return array();
 		}
 	}
+	
 }

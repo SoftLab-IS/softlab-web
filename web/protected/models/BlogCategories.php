@@ -98,4 +98,5 @@ class BlogCategories extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
 }

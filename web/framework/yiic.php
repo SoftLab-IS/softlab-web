@@ -22,7 +22,7 @@ if (PHP_OS == 'WINNT') {
   echo 'Enter your Github Username: ';
   $mergeWith = stream_get_line(STDIN, 1024, PHP_EOL);
 } else {
-  $mergeWith = readline('Enter your Github Username: ');
+  $mergeWith = "radans";
 }
 
 echo 'Merging console config with: ' . $mergeWith;

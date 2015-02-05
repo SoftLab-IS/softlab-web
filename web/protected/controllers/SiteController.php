@@ -29,7 +29,27 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$number = BlogPost::model()->findAll();
+		if (isset($_GET['number'])) {
+			$type = 'number';
+			$value = CHttpRequest::getParam('number');
+		}elseif (isset($_GET['tags'])) {
+			$type = 'tags';
+			$value = CHttpRequest::getParam('tags');
+		}elseif (isset($_GET['author'])) {
+			$type = 'author';
+			$value = CHttpRequest::getParam('author');
+		}elseif (isset($_GET['category'])) {
+			$type = 'category';
+			$value = CHttpRequest::getParam('category');
+		}
+		$this->render('index',
+			array(
+			'posts' => $this->widgetSelection(),
+			'number' => count($number)/5,
+			'type' => $type,
+			'value' =>$value,
+				));
 	}
 
 	/**
@@ -126,37 +146,6 @@ class SiteController extends Controller
 		}
 		else
 			throw new CHttpException(403, 'Logout ključ nije postavljen.');
-
-	}
-	public function widgetSelection() {
-    $number = CHttpRequest::getParam('number');
-	$tags=CHttpRequest::getParam('tags');
-	$author=CHttpRequest::getParam('author');
-	$category=CHttpRequest::getParam('category');
-    if ($number == NULL) {
-    	$number = 5;
-    }
-    if ($category == NULL) {
-    	$widgetPosts = new CDbCriteria;
-    	$widgetPosts->limit = $number;
-   		$widgetPosts->compare('isVisible',1,true,'AND');
-    	$widgetPosts->compare('tags',$tags,true,'AND');
-    	$widgetPosts->compare('authorID',$author,true);
-    	$widgetPosts->order = 'entryDate DESC';
-    	$posts = BlogPost::model()->findAll($widgetPosts);
-    }else{
-       	$widgetPostsWithCategory = BlogCategories::model();
-       	$postsInCategory = $widgetPostsWithCategory->with (array(
-       		'slBlogPosts'=>array(
-       		'condition'=>'slBlogPosts.isVisible = 1',
-       		//'select' => 'slBlogPosts.isVisible = 1',
-       		'order'=>'slBlogPosts.entryDate DESC',
-       		)))->findByPK($category, array('limit'=>$number,'together'=>true));
-       	for ($i=0; $i < count($postsInCategory->slBlogPosts); $i++) { 
-       		$posts[$i] =  $postsInCategory->slBlogPosts[$i];
-       	}
-    }
-    return $posts;
 
 	}
     
