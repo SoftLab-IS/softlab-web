@@ -25,8 +25,7 @@
 	</div>
 </div>
 	<div class="large-4 columns widget">
-		<?php $this->widget('application.components.PostWidget', array('crumbs'=>$posts,
-																		'number'=>$number,
+		<?php $this->widget('application.components.PostWidget', array('number'=>$number,
 																		'type'=> $type,
 																		'value'=>$value,));?>
 	</div>

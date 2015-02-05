@@ -1,7 +1,6 @@
 <?php
 class PostWidget extends CWidget {
  	
-    public $crumbs = array();
     public $number = 5;
     public $type = '';
     public $value = '';

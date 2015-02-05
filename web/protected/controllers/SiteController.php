@@ -45,7 +45,6 @@ class SiteController extends Controller
 		}
 		$this->render('index',
 			array(
-			'posts' => $this->widgetSelection(),
 			'number' => count($number)/5,
 			'type' => $type,
 			'value' =>$value,

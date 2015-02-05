@@ -6,9 +6,9 @@
     $selected = 0;
     
     $posts = $this->posts();
-  Yii::app()->clientScript->registerScriptFile('//code.jquery.com/jquery-1.10.2.js');
-  Yii::app()->clientScript->registerScriptFile('//code.jquery.com/ui/1.11.1/jquery-ui.js');
-  Yii::app()->clientScript->registerScript('tabs',"$(function() {
+    Yii::app()->clientScript->registerScriptFile('//code.jquery.com/jquery-1.10.2.js');
+    Yii::app()->clientScript->registerScriptFile('//code.jquery.com/ui/1.11.1/jquery-ui.js');
+    Yii::app()->clientScript->registerScript('tabs',"$(function() {
     $('#tabs').tabs();
   });");
 

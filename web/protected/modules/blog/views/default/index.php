@@ -22,7 +22,6 @@ $this->menu=array(
 $i = 0;
 foreach($posts as $model) : ?>
 <div class="panel">
-
 	<h3><?php echo CHtml::link($model->name, Yii::app()->createUrl("blog/default/view", array('id' => $model->blogPostId))); ?></h3>
  	<br>
 		<?php echo $model->shortText; ?>
@@ -49,7 +48,6 @@ foreach($posts as $model) : ?>
 
 		Datum postavljanja: <?php echo date('d.m.Y', $model->entryDate); ?> 
 		<?php echo Chtml::link("Vidi Čitav Post", Yii::app()->createUrl('blog/default/view', array('id' => $model->blogPostId)),array("class" => "button")); ?>
-		<br>
 	
 </div>
     <?php endforeach;?>
