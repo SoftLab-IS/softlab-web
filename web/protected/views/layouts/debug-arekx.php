@@ -19,14 +19,19 @@
 <style type="text/css">
 #debug-info
 {
-	position: absolute;
+	position: fixed;
 	left: 0px;
-	top: 0px;
+	bottom: 0px;
 	right: 0px;
 	background: rgba(0, 0, 0, 0.7);
 	color: #FFFFFF;
 	text-align: center;
 	padding: 10px 0px 10px 0px;
+	transition: all .4s ease;
+}
+
+#debug-info:hover {
+	opacity: 0.5;
 }
 
 #debug-info p

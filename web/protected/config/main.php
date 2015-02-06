@@ -75,7 +75,7 @@ return array(
 		// uncomment the following to use a MySQL database
 		*/
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=Softlab_db',
+			'connectionString' => 'mysql:host=localhost;dbname=softlab',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
@@ -108,6 +108,6 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-		'debug' => false,
+		'debug' => true,
 	),
 );

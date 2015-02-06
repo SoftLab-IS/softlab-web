@@ -6,7 +6,7 @@ $conf->mergeWith(
 	
 	'components'=>array(
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=Softlab_db',
+			'connectionString' => 'mysql:host=localhost;dbname=softlab',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

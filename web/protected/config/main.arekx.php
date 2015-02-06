@@ -22,7 +22,7 @@ $conf->mergeWith(
 			'allowAutoLogin'=>true,
 		),
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=Softlab_db',
+			'connectionString' => 'mysql:host=localhost;dbname=softlab',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',

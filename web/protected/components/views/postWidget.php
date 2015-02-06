@@ -1,4 +1,5 @@
- <?php 
+ <?php
+    $increment = 0;
     for ($i=0; $i < $this->number ; $i++) { 
         $increment = $increment + 5;
         $numberOfEntries[$increment] = $increment;
