@@ -1,6 +1,3 @@
-# yii console command
-/yii
-
 # phpstorm project files
 .idea
 
@@ -24,20 +21,7 @@ composer.phar
 # Mac DS_Store Files
 .DS_Store
 
-*.sublime-project
-*.sublime-workspace
-
 # phpunit itself is not needed
 phpunit.phar
 # local phpunit config
 /phpunit.xml
-/.fontconfig
-/.vagrant
-.bowerrc
-composer.lock
-/puphpet/files/dot/ssh
-/vendor
-/frontend/runtime
-/backend/runtime
-/common/runtime
-/console/runtime
