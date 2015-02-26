@@ -13,6 +13,9 @@ use app\models\SlBlogCategories;
 use app\models\SlBlogTags;
 use app\models\SlBlogPostInCategory;
 use yii\data\Pagination;
+use yii\web\Session;
+use app\models\SlUsers;
+use app\models\SlUserData;
 /**
  * BlogPostController implements the CRUD actions for SlBlogPost model.
  */
@@ -61,12 +64,19 @@ class BlogPostController extends Controller
         $models = $searchResult->offset($pages->offset)
         ->limit(10)
         ->all();
+        $userData = array();
+        $i = 0;
+        foreach ($models as $model) {
+           $userData[$i] = SlUsers::find()->where(['usersId'=> $model->authorId])->with('userDataF')->one();
+           $i++;
+        }
         return $this->render('index', [
             'model'=>$data,
             'data' => $models,
             'pages' => $pages,
             'categories' => $categories,
             'tags' => $tags,
+            'userData' => $userData,
         ]);
     }
 
@@ -78,8 +88,11 @@ class BlogPostController extends Controller
     public function actionView($id)
     {
         $viewPost = new BlogPostSearch();
+        $postData = $viewPost->view($id);
+        $authorData = SlUserData::find()->where(['userDataId' => $postData[0]->author->usersId])->one();
         return $this->render('view', [
-            'model' => $viewPost->view($id),
+            'model' => $postData,
+            'author' => $authorData,
         ]);
     }
 
@@ -95,6 +108,10 @@ class BlogPostController extends Controller
             if ($model->load(Yii::$app->request->post())){
                  $model->entryDate=time();
                  $model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&#]+@', '-', $model->name));
+                 $session = new Session;
+                 $session-> open();
+                 $model->authorId = $session['userId'];
+                 $session->close();
                 if ($model->save()) {
                     if (isset($_POST['Categories'])) {
                         $selectedCategories = $_POST['Categories'];
@@ -133,6 +150,10 @@ class BlogPostController extends Controller
         if ($model->load(Yii::$app->request->post())){
             $model->entryDate=time();
             $model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&#]+@', '-', $model->name));
+            $session = new Session;
+            $session-> open();
+            $model->authorId = $session['userId'];
+            $session->close();
             if($model->save()) {
                 $postInCategories = new SlBlogPostInCategory();
                 $postInCategories->deleteAll('blogPostFid = :id',[':id' => $model->blogPostId]);
@@ -166,8 +187,9 @@ class BlogPostController extends Controller
      */
     public function actionDelete($id)
     {
+        
+        $blogInCategores = SlBlogPostInCategory::deleteAll('blogPostFid = :id',[':id' => $id]);
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 

@@ -4,7 +4,8 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
-
+use yii\web\Session;
+use app\models\SlUserData;
 /**
  * LoginForm is the model behind the login form.
  */
@@ -29,6 +30,7 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            [['username'], 'email']
         ];
     }
 
@@ -56,7 +58,16 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-
+            $user = SlUsers::find()->where(['email' => $this->username])->with('userDataF')->one();
+            $session = new Session;
+            $session -> open();
+            $session['userId'] = $user->usersId;
+            $session['firstName'] = $user->userDataF->firstName;
+            $session['lastName'] = $user->userDataF->lastName;
+            $session -> close();
+            $userLogin = new SlUserData();
+            $userLogin->lastLoginDate = time();
+            $userLogin->save();
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
         } else {
             return false;

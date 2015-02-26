@@ -4,10 +4,11 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
+use yii\web\Session;
 /* @var $this \yii\web\View */
 /* @var $content string */
-
+$session = new Session;
+$session->open();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -41,12 +42,13 @@ AppAsset::register($this);
                     ['label'=>'Blog','url'=>['/blog-post/index']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['label' => 'Logout (' . $session['firstName']." ". $session['lastName'] . ')',
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ],
             ]);
             NavBar::end();
+            $session->close();
         ?>
 
         <div class="container">

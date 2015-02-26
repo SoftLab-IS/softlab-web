@@ -23,13 +23,15 @@ use yii\widgets\LinkPager;
     </p>
 <?php } ?>
     <h1>Postovi u kategorij: <?= $model[0]->name; ?></h1>
-   <?php foreach ($model[0]->blogPostFs as $posts) : ?>
+   <?php 
+   $i = 0;
+   foreach ($model[0]->blogPostFs as $posts) : ?>
         <ul>
                       <li><?= Html::a($posts->name,['blog-post/view','id' => $posts->blogPostId]); ?></li>
                       <li><?= $posts->shortText; ?></li>
                       <li><?= $posts->fullArticle; ?></li>
                       <li><?= date("H:m d.m.y",$posts->entryDate); ?></li>
-                      <li><?= $posts->author->email ?></li>
+                      <li><?= Html::a($authorData[$i]->firstName.' '.$authorData[$i]->lastName,['user/view','id'=>$posts->author->usersId]) ?></li>
                   </ul>
                   <?php if (!Yii::$app->user->isGuest) {
                     ?>

@@ -42,13 +42,15 @@ use yii\widgets\LinkPager;
         </div>
     </div>
         <div class="col-lg-9">
-                 <?php foreach ($data as $posts) : ?>
+                 <?php 
+                 $i = 0;
+                 foreach ($data as $posts) : ?>
                   <ul>
                       <li><?= Html::a($posts->name,['view','id' => $posts->blogPostId]); ?></li>
                       <li><?= $posts->shortText; ?></li>
                       <li><?= $posts->fullArticle; ?></li>
                       <li><?= date("H:m d.m.y",$posts->entryDate); ?></li>
-                      <li><?= $posts->author->email ?></li>
+                      <li><?= Html::a($userData[0]->userDataF->firstName . ' ' . $userData[0]->userDataF->lastName,['user/view','id'=> $posts->authorId])?></li>
                   </ul>
                   <?php if (!Yii::$app->user->isGuest) {
                     ?>

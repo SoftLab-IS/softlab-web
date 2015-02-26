@@ -8,18 +8,7 @@ use yii\widgets\LinkPager;
 ?>
 <div class="sl-users-view">
 
-<?php if (!Yii::$app->user->isGuest) { ?>
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model[0]->usersId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model[0]->usersId], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-<?php } ?>
+
 <div class="row">
     <div class="col-lg-9">
         <div class="row">
@@ -38,17 +27,16 @@ use yii\widgets\LinkPager;
 </div>
 <?php foreach ($model as $posts) : ?>
                      <ul>
-                      <li><?= Html::a($posts->name,['view','id' => $posts->blogPostId]); ?></li>
+                      <li><?= Html::a($posts->name,['blog-post/view','id' => $posts->blogPostId]); ?></li>
                       <li><?= $posts->shortText; ?></li>
                       <li><?= $posts->fullArticle; ?></li>
                       <li><?= date("H:m d.m.y",$posts->entryDate); ?></li>
-                      <li><?= $posts->author->email ?></li>
                   </ul>
                   <?php if (!Yii::$app->user->isGuest) {
                     ?>
                       <p>
-                              <?= Html::a('Update', ['update', 'id' => $posts->blogPostId], ['class' => 'btn btn-primary']) ?>
-                              <?= Html::a('Delete', ['delete', 'id' => $posts->blogPostId], [
+                              <?= Html::a('Update', ['blog-post/update', 'id' => $posts->blogPostId], ['class' => 'btn btn-primary']) ?>
+                              <?= Html::a('Delete', ['blog-post/delete', 'id' => $posts->blogPostId], [
                                   'class' => 'btn btn-danger',
                                   'data' => [
                                       'confirm' => 'Are you sure you want to delete this item?',
@@ -57,7 +45,7 @@ use yii\widgets\LinkPager;
                           ]) ?>
                       </p>
                   <?php } ?>
-                  <?= Html::a('Vidi Citav Post',['view', 'id' => $posts->blogPostId], ['class' => 'btn']) ?>
+                  <?= Html::a('Vidi Citav Post',['blog-post/view', 'id' => $posts->blogPostId], ['class' => 'btn']) ?>
 
         <?php endforeach; ?>
    <div class="col-lg-9">

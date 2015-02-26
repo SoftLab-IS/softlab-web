@@ -31,7 +31,7 @@ use yii\widgets\DetailView;
     </div>
     <div class="col-lg-12">
         <div class="col-lg-6">
-            Autor Posta: <?= Html::a($model[0]->author->email,['user/view','id'=>$model[0]->author->usersId]) ?>
+            Autor Posta: <?= Html::a($author->firstName.' '.$author->lastName ,['user/view','id'=>$model[0]->author->usersId]) ?>
         </div>
         <div class="col-lg-6">
             Datum Postavljanja: <?= date("h:m d.m.y", $model[0]->entryDate) ?>

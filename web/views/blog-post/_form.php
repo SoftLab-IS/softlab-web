@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use mihaildev\ckeditor\CKEditor;
-
+use yii\web\Session;
 /* @var $this yii\web\View */
 /* @var $model app\models\SlBlogPost */
 /* @var $form yii\widgets\ActiveForm */
@@ -31,7 +31,10 @@ use mihaildev\ckeditor\CKEditor;
 
     <?= $form->field($model, 'isVisible')->checkbox() ?>
 
-    <?= $form->field($model, 'authorId')->textInput() ?>
+    <b>User: </b> <?php $session = new Session;
+    $session->open();
+    echo $session['firstName'] . " ". $session['lastName'];
+    $session->close(); ?>
     <?php 
      $j = 1;
      if (!empty($selectedCategories)) {
