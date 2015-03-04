@@ -16,6 +16,7 @@ use yii\data\Pagination;
 use yii\web\Session;
 use app\models\SlUsers;
 use app\models\SlUserData;
+use app\models\UsersSearch;
 /**
  * BlogPostController implements the CRUD actions for SlBlogPost model.
  */
@@ -64,10 +65,11 @@ class BlogPostController extends Controller
         $models = $searchResult->offset($pages->offset)
         ->limit(10)
         ->all();
-        $userData = array();
+        $userData[] = "";
         $i = 0;
         foreach ($models as $model) {
-           $userData[$i] = SlUsers::find()->where(['usersId'=> $model->authorId])->with('userDataF')->one();
+            $user = new UsersSearch();
+           $userData[$i] = $user->getFullName($model->authorId);
            $i++;
         }
         return $this->render('index', [
@@ -89,7 +91,7 @@ class BlogPostController extends Controller
     {
         $viewPost = new BlogPostSearch();
         $postData = $viewPost->view($id);
-        $authorData = SlUserData::find()->where(['userDataId' => $postData[0]->author->usersId])->one();
+        $authorData = SlUserData::find()->where(['userDataId' => $postData[0]->author->userDataFid])->one();
         return $this->render('view', [
             'model' => $postData,
             'author' => $authorData,
@@ -108,10 +110,7 @@ class BlogPostController extends Controller
             if ($model->load(Yii::$app->request->post())){
                  $model->entryDate=time();
                  $model->urlLink=mb_strtolower(preg_replace('@[\s!:;_\?=\\\+\*/%&#]+@', '-', $model->name));
-                 $session = new Session;
-                 $session-> open();
-                 $model->authorId = $session['userId'];
-                 $session->close();
+                 $model->authorId = Yii::$app->getSession()->get('userId',0);
                 if ($model->save()) {
                     if (isset($_POST['Categories'])) {
                         $selectedCategories = $_POST['Categories'];

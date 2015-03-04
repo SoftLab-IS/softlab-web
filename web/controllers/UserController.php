@@ -68,6 +68,7 @@ class UserController extends Controller
             'pages' => $pages,
             'totalPosts' => $totalNumber,
             'image' => $image,
+            'id' => $id,
             ]);
     }
 
@@ -136,4 +137,5 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
 }

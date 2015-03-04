@@ -7,17 +7,17 @@ use yii\widgets\LinkPager;
 /* @var $model app\models\SlBlogTags */
 ?>
 <div class="sl-blog-tags-view">
-    <?php foreach ($model as $posts) : ?>
-    <ul>
-                      <li><?= Html::a($posts->name,['blog-post/view','id' => $posts->blogPostId]); ?></li>
-                      <li><?= $posts->shortText; ?></li>
-                      <li><?= $posts->fullArticle; ?></li>
-                      <li><?= date("H:m d.m.y",$posts->entryDate); ?></li>
-                      <li><?= $posts->author->email ?></li>
-                  </ul>
-                  <?php if (!Yii::$app->user->isGuest) {
+    <?php $i = 0; foreach ($model as $posts) : ?>
+    <div class="row sl-panel">
+                    <div class='col-lg-12'><?= Html::a($posts->name,['view','id' => $posts->blogPostId]); ?></div>
+                    <div class='col-lg-12'><?= $posts->shortText; ?></div>
+                    <div class='col-lg-6'>Datum Postavljanja: <?= date("d.m.y",$posts->entryDate); ?></div>
+                    <div class='col-lg-6'>Autor: <?= Html::a($userData[$i],['user/view','id'=> $posts->authorId])?></div>
+                    <div class='col-lg-12'>
+                      <?= Html::a('Vidi Citav Post',['view', 'id' => $posts->blogPostId], ['class' => 'btn sl-button']) ?>
+                       <?php if (!Yii::$app->user->isGuest) {
                     ?>
-                      <p>
+                     
                               <?= Html::a('Update', ['update', 'id' => $posts->blogPostId], ['class' => 'btn btn-primary']) ?>
                               <?= Html::a('Delete', ['delete', 'id' => $posts->blogPostId], [
                                   'class' => 'btn btn-danger',
@@ -26,9 +26,10 @@ use yii\widgets\LinkPager;
                                       'method' => 'post',
                                   ],
                           ]) ?>
-                      </p>
+                      
                   <?php } ?>
-                  <?= Html::a('Vidi Citav Post',['blog-post/view', 'id' => $posts->blogPostId], ['class' => 'btn']) ?>
+                    </div>
+                  </div>
     <?php  endforeach; ?>
      <div class="col-lg-9">
         <?php echo LinkPager::widget([

@@ -2,27 +2,28 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
 /* @var $this yii\web\View */
 /* @var $model app\models\SLUserData */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="sluser-data-form">
+<div class="sluser-data-form sl-panel">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']   // important, needed for file upload
+    ]); ?>
 
     <?= $form->field($model, 'firstName')->textInput(['maxlength' => 30]) ?>
 
     <?= $form->field($model, 'lastName')->textInput(['maxlength' => 30]) ?>
 
-    <?= $form->field($model, 'registrationDate')->textInput(['maxlength' => 21]) ?>
+    <?= $form->field($user, 'email')->textInput(['maxlength' => 30]) ?>
 
-    <?= $form->field($model, 'lastLoginDate')->textInput(['maxlength' => 21]) ?>
+    <?= $form->field($user, 'password')->textInput(['maxlength' => 30])->passwordInput() ?>
 
-    <?= $form->field($model, 'lastLoginIP')->textInput(['maxlength' => 80]) ?>
+    Datum logovanja:     <?= date("d.m.y") ?>
 
-    <?= $form->field($model, 'avatarUploadFid')->textInput() ?>
+    <?= $form->field($uploadModel, 'file')->fileInput() ?>
 
     <?= $form->field($model, 'facebookLink')->textInput(['maxlength' => 255]) ?>
 
@@ -34,6 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'aboutMeLink')->textInput(['maxlength' => 255]) ?>
 
+    <?= $form->field($model, 'user_profile')->textInput(['maxlength' => 255]) ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

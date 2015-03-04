@@ -73,5 +73,10 @@ class UsersSearch extends SlUsers
     public function user($id){
         return SlUsers::find()->where('usersId = :id',[':id' => $id])->with('userDataF')->all();
     }
+    public function getFullName($id)
+    {
+       $data = SlUsers::find()->where('usersId = :id',[':id' => $id])->with('userDataF')->one();
+       return $data->userDataF->firstName.' '.$data->userDataF->lastName;
+    }
     
 }

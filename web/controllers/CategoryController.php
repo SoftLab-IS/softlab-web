@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 use app\models\SlUserData;
+use app\models\UsersSearch;
 /**
  * CategoryController implements the CRUD actions for SlBlogCategories model.
  */
@@ -57,13 +58,14 @@ class CategoryController extends Controller
         ->all();
         $i = 0;
         foreach ($models[0]->blogPostFs as $model) {
-           $authorData[$i] = SlUserData::findOne(['userDataId'=> $model->author->usersId]);
+            $user = new UsersSearch();
+            $authorData[$i] = $user->getFullName($model->author->usersId);
             $i++;
         }
         return $this->render('view', [
             'model' => $models,
             'pages' => $pages,
-            'authorData' => $authorData,
+            'userData' => $authorData,
         ]);
     }
 

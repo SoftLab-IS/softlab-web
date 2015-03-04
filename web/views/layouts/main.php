@@ -7,8 +7,6 @@ use app\assets\AppAsset;
 use yii\web\Session;
 /* @var $this \yii\web\View */
 /* @var $content string */
-$session = new Session;
-$session->open();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -27,28 +25,28 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+                'brandLabel' => '',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
+                'options' => ['class' => 'navbar-nav'],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'About', 'url' => ['/site/about']],
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    ['label' => 'O nama', 'url' => ['/site/about']],
                     ['label'=>'Blog','url'=>['/blog-post/index']],
+                    ['label'=>'Članovi','url'=>['/user-data/index']],
+                    ['label' => 'Kontakt', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . $session['firstName']." ". $session['lastName'] . ')',
+                        ['label' => 'Logout (' . Yii::$app->getSession()->get('firstName','Demo').' '.Yii::$app->getSession()->get('lastName','Demo') . ')',
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ],
             ]);
             NavBar::end();
-            $session->close();
         ?>
 
         <div class="container">

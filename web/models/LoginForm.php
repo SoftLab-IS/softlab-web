@@ -59,12 +59,9 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             $user = SlUsers::find()->where(['email' => $this->username])->with('userDataF')->one();
-            $session = new Session;
-            $session -> open();
-            $session['userId'] = $user->usersId;
-            $session['firstName'] = $user->userDataF->firstName;
-            $session['lastName'] = $user->userDataF->lastName;
-            $session -> close();
+            Yii::$app->getSession()->set('userId',$user->usersId);
+            Yii::$app->getSession()->set('firstName',$user->userDataF->firstName);
+            Yii::$app->getSession()->set('lastName',$user->userDataF->lastName);
             $userLogin = new SlUserData();
             $userLogin->lastLoginDate = time();
             $userLogin->save();

@@ -12,7 +12,7 @@ use yii\web\Session;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="sl-blog-post-form">
+<div class="sl-blog-post-form sl-panel">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -31,10 +31,7 @@ use yii\web\Session;
 
     <?= $form->field($model, 'isVisible')->checkbox() ?>
 
-    <b>User: </b> <?php $session = new Session;
-    $session->open();
-    echo $session['firstName'] . " ". $session['lastName'];
-    $session->close(); ?>
+    <b>User: </b> <?= Yii::$app->getSession()->get("firstName","Demo").' '.Yii::$app->getSession()->get("lastName","Demo") ?>
     <?php 
      $j = 1;
      if (!empty($selectedCategories)) {
@@ -43,7 +40,7 @@ use yii\web\Session;
          $j++;
      }
      }else{
-        $selected = array();
+        $selected[];
      }
       
    // $selected = ArrayHelper::map($selectedCategories[0]->blogCategoryF,'blogCategoryId','name');
