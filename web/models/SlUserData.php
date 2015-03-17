@@ -19,6 +19,7 @@ use Yii;
  * @property string $linkedInLink
  * @property string $googlePlusLink
  * @property string $aboutMeLink
+ * @property string $user_profile
  *
  * @property SlUploads $avatarUploadF
  * @property SlUserDataHasCvData[] $slUserDataHasCvDatas
@@ -41,11 +42,12 @@ class SlUserData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['registrationDate'], 'required'],
+            [['registrationDate', 'user_profile'], 'required'],
             [['registrationDate', 'lastLoginDate', 'avatarUploadFid'], 'integer'],
             [['firstName', 'lastName'], 'string', 'max' => 30],
             [['lastLoginIP'], 'string', 'max' => 80],
             [['facebookLink', 'twitterLink', 'linkedInLink', 'googlePlusLink', 'aboutMeLink'], 'string', 'max' => 255],
+            [['user_profile'], 'string', 'max' => 200],
             [['avatarUploadFid'], 'unique']
         ];
     }
@@ -68,6 +70,7 @@ class SlUserData extends \yii\db\ActiveRecord
             'linkedInLink' => 'Linked In Link',
             'googlePlusLink' => 'Google Plus Link',
             'aboutMeLink' => 'About Me Link',
+            'user_profile' => 'User Profile',
         ];
     }
 

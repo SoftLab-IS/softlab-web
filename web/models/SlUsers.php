@@ -68,7 +68,7 @@ class SlUsers extends \yii\db\ActiveRecord
             'isLoggedIn' => 'Is Logged In',
             'userDataFid' => 'User Data Fid',
             'userGroupFid' => 'User Group Fid',
-        ];
+         ];
     }
 
     /**
@@ -149,5 +149,20 @@ class SlUsers extends \yii\db\ActiveRecord
     public function getUserGroupF()
     {
         return $this->hasOne(SlUserGroups::className(), ['userGroupId' => 'userGroupFid']);
+    }
+    public function saveUser($email,$passwod,$userId)
+    {                   
+        $salt = mcrypt_create_iv(10, MCRYPT_DEV_URANDOM);
+        $users = new SlUsers();
+        $users->salt = $salt;
+        $users->password = md5($passwod . $salt);
+        $users->userDataFid = $userId;
+        $users->userGroupFid = 1;
+        if ($users->save()) {
+            print_r($users->email);
+        }else{
+            echo "propalo sve";
+        }
+        die();
     }
 }

@@ -1,6 +1,23 @@
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
 html,
 body {
     height: 100%;
+    background-image: url("../../images/1.png");
+    background-position: center;
+    padding-bottom: 20px;
+    font-family: "Open Sans Condensed",Arial,sans-serif;
+font-weight: normal;
+font-style: normal;
+line-height: 1.5;
+cursor: auto;
 }
 .pagination{
     position:relative;
@@ -91,4 +108,162 @@ a.desc:after {
     border-left: 3px solid #eed3d7;
     padding: 10px 20px;
     margin: 0 0 15px 0;
+}
+nav#w0,nav#w1, nav#w2, nav#w4 {
+background-color: #0772b4;
+border: 0px;
+color: white;
+}
+nav#w0 > li > a {
+color:white;
+}
+.sl-button{
+    background-color: #007095;
+    color: white;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 0px;
+}
+.sl-button:hover{
+    background-color:rgba(0,0,0,0);
+    color: black;
+    padding: 5px;
+    border: 1px solid #007095;
+}
+.sl-panel{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #D8D8D8;
+    margin-bottom: 1.25rem;
+    padding: 1.25rem;
+    background-image: url("../../images/grey.png");
+    border-radius: 2px;
+    color: #333;
+}
+.sl-button-search{
+    background-color: #007095;
+    color: white;
+    padding: 5px, 10px,15px,20px;
+    border-radius: 0px;
+}
+.navbar-inverse .navbar-nav > .active > a,
+ .navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #008cba;
+    color: white;
+ }
+  .navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #008cba;
+  }
+  .navbar-inverse .navbar-nav > li > a {
+    color: white;
+  }
+  .social-network {
+    margin-bottom: 20px;
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    filter: grayscale(0%);   
+}
+ .social-network:hover {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);   
+}
+.margins{
+    margin: 10px;
+}
+@media (max-width: 767px) {
+    .sl-button-search{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+  .navbar .navbar-nav {
+    width: 100%;
+ }
+ .sl-button{
+    width: 100%;
+ }
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.sl-last-posts{
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.index-main{
+    padding-right: 30px;
+}
+.no-margin{
+    margin-top: 0px;
+}
+.nav-tabs > li > a{
+    color: white;
+    background-color: #0772B4;
+    border-radius: 0px;
+    margin-right: 0px;
+    letter-spacing: 2.8px;
+}
+.nav-tabs > li > a:hover{
+    color: #0772B4;
+    background-color: white;
+}
+.nav-tabs > li.active > a{
+    color: #0772B4;
+    background-color: white;
+}
+/* -------------------------------------------------------
+ * PERSONAL SOCIAL
+ ---------------------------------------------------------*/
+
+.personal-social {
+    display: inline-block;
+    margin: 5px 0 0 0;
+}
+
+.personal-social a {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    
+    text-indent: -9999px;
+}
+
+.personal-fb {
+    background: url('../../images/icons/facebook.png') center center no-repeat;
+}
+
+.personal-fb:hover {
+    background: url('../../images/icons/facebook-hover.png') center center no-repeat;
+}
+
+.personal-tw {
+    background: url('../../images/icons/twitter.png') center center no-repeat;
+}
+
+.personal-tw:hover {
+    background: url('../../images/icons/twitter-hover.png') center center no-repeat;
+}
+
+.personal-in {
+    background: url('../../images/icons/linkedin.png') center center no-repeat;
+}
+
+.personal-in:hover {
+    background: url('../../images/icons/linkedin-hover.png') center center no-repeat;
+}
+
+.personal-me {
+    background: url('../../images/icons/aboutme.png') center center no-repeat;
+}
+
+.personal-me:hover {
+    background: url('../../images/icons/aboutme-hover.png') center center no-repeat;
+}
+
+.personal-mail {
+    background: url('../../images/icons/email.png') center center no-repeat;
+}
+
+.personal-mail:hover {
+    background: url('../../images/icons/email-hover.png') center center no-repeat;
 }

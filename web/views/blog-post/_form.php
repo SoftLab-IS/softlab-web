@@ -6,13 +6,13 @@ use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 use mihaildev\ckeditor\CKEditor;
-
+use yii\web\Session;
 /* @var $this yii\web\View */
 /* @var $model app\models\SlBlogPost */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="sl-blog-post-form">
+<div class="sl-blog-post-form sl-panel">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -31,7 +31,7 @@ use mihaildev\ckeditor\CKEditor;
 
     <?= $form->field($model, 'isVisible')->checkbox() ?>
 
-    <?= $form->field($model, 'authorId')->textInput() ?>
+    <b>User: </b> <?= Yii::$app->getSession()->get("firstName","Demo").' '.Yii::$app->getSession()->get("lastName","Demo") ?>
     <?php 
      $j = 1;
      if (!empty($selectedCategories)) {
@@ -40,7 +40,7 @@ use mihaildev\ckeditor\CKEditor;
          $j++;
      }
      }else{
-        $selected = array();
+        $selected[];
      }
       
    // $selected = ArrayHelper::map($selectedCategories[0]->blogCategoryF,'blogCategoryId','name');

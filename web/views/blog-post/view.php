@@ -23,21 +23,21 @@ use yii\widgets\DetailView;
     </p>
  <?php } ?>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 sl-panel">
         <h1><?= $model[0]->name ?></h1>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 sl-panel">
         <?= $model[0]->fullArticle ?>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 sl-panel">
         <div class="col-lg-6">
-            Autor Posta: <?= Html::a($model[0]->author->email,['user/view','id'=>$model[0]->author->usersId]) ?>
+            Autor Posta: <?= Html::a($author->firstName.' '.$author->lastName ,['user/view','id'=>$model[0]->author->usersId]) ?>
         </div>
         <div class="col-lg-6">
             Datum Postavljanja: <?= date("h:m d.m.y", $model[0]->entryDate) ?>
         </div>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 sl-panel">
         <div class="col-lg-6">
             Tagovi: <?php
                 $tags = explode(',', $model[0]->tags);

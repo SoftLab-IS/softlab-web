@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\SlBlogPost */
 
-$this->title = 'Update Sl Blog Post: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Sl Blog Posts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->blogPostId]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'SoftLab Istočno Sarajevo | Blog Update';
 ?>
 <div class="sl-blog-post-update">
 

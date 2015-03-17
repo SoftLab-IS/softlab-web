@@ -8,45 +8,69 @@ use yii\widgets\LinkPager;
 ?>
 <div class="sl-users-view">
 
-<?php if (!Yii::$app->user->isGuest) { ?>
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model[0]->usersId], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model[0]->usersId], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-<?php } ?>
-<div class="row">
-    <div class="col-lg-9">
-        <div class="row">
+
+<div class="row sl-panel">
+  <div class="visible-xs col-xs-12">
+        <?= Html::img($image[0]->fullpath, ['alt'=>'some', 'class'=>'img img-responsive']);?> 
+    </div>
+    <div class="col-lg-9 col-sm-9 col-xs-12">
+        <div class="row ">
             <div class="col-lg-12"><?= $user->userDataF->firstName . " ". $user->userDataF->lastName ?></div>
             <div class="col-lg-12">Zadnji put na mrezi: <?= date("h:m d.m.y",$user->userDataF->lastLoginDate) ?></div>
             <div class="col-lg-12">Broj postova <?= $totalPosts ?></div>
-            <div class="col-lg-12">Socijalne mreze: <a href="<?= $user->userDataF->facebookLink ?>">facebook</a> <a href="<?= $user->userDataF->twitterLink ?>">Twitter</a>
-             <a href="<?= $user->userDataF->linkedInLink ?>">LinkedIn</a> <a href="<?= $user->userDataF->googlePlusLink ?>">G+</a>
-             <a href="<?= $user->userDataF->aboutMeLink ?>">aboutMe</a>
-                </div>
+                <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-2 col-xs-6 col-sm-2">
+                                    <?= Html::a(Html::img('../images/fb.png',
+                                    ['alt'=>'user-avatar', 'class'=>'img img-responsive social-network']),
+                                    $user->userDataF->facebookLink); ?>
+                                </div>
+                                <div class="col-lg-2 col-xs-6 col-sm-2">
+                                    <?= Html::a(Html::img('../images/gplus.png',
+                                    ['alt'=>'user-avatar', 'class'=>'img img-responsive social-network']),
+                                    $user->userDataF->googlePlusLink); ?>
+                                </div>
+                                <div class="col-lg-2 col-xs-6 col-sm-2">
+                                    <?= Html::a(Html::img('../images/twitter.png',
+                                    ['alt'=>'user-avatar', 'class'=>'img img-responsive social-network']),
+                                    $user->userDataF->twitterLink); ?>
+                                </div>
+                                <div class="col-lg-2 col-xs-6 col-sm-2">
+                                    <?= Html::a(Html::img('../images/linkedin.png',
+                                    ['alt'=>'user-avatar', 'class'=>'img img-responsive social-network']),
+                                    $user->userDataF->linkedInLink); ?>
+                                </div>
+                                <div class="col-lg-2">
+                                  <?php if (!Yii::$app->user->isGuest && $id == Yii::$app->getSession()->get('userId')) { ?>
+                                    <?= Html::a('Update', ['user-data/update', 'id' => $user->userDataF->userDataId], ['class' => 'btn btn-primary']) ?>
+                                  <?php } ?>
+                                </div>
+                                <div class="col-lg-2"></div>
+                            </div>
+                            <div >
+                                
+                            </div>
+                            
+                            
+                            
+                            
+             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-sm-3 hidden-xs">
         <?= Html::img($image[0]->fullpath, ['alt'=>'some', 'class'=>'img img-responsive']);?> 
     </div>
 </div>
 <?php foreach ($model as $posts) : ?>
-                     <ul>
-                      <li><?= Html::a($posts->name,['view','id' => $posts->blogPostId]); ?></li>
-                      <li><?= $posts->shortText; ?></li>
-                      <li><?= $posts->fullArticle; ?></li>
-                      <li><?= date("H:m d.m.y",$posts->entryDate); ?></li>
-                      <li><?= $posts->author->email ?></li>
-                  </ul>
-                  <?php if (!Yii::$app->user->isGuest) {
+                     <div class="row sl-panel">
+                    <div class='col-lg-12'><?= Html::a($posts->name,['view','id' => $posts->blogPostId]); ?></div>
+                    <div class='col-lg-12'><?= $posts->shortText; ?></div>
+                    <div class='col-lg-6'>Datum Postavljanja: <?= date("d.m.y",$posts->entryDate); ?></div>
+                    <div class='col-lg-12'>
+                      <?= Html::a('Vidi Citav Post',['view', 'id' => $posts->blogPostId], ['class' => 'btn sl-button']) ?>
+                       <?php if (!Yii::$app->user->isGuest) {
                     ?>
-                      <p>
+                     
                               <?= Html::a('Update', ['update', 'id' => $posts->blogPostId], ['class' => 'btn btn-primary']) ?>
                               <?= Html::a('Delete', ['delete', 'id' => $posts->blogPostId], [
                                   'class' => 'btn btn-danger',
@@ -55,10 +79,11 @@ use yii\widgets\LinkPager;
                                       'method' => 'post',
                                   ],
                           ]) ?>
-                      </p>
+                      
                   <?php } ?>
-                  <?= Html::a('Vidi Citav Post',['view', 'id' => $posts->blogPostId], ['class' => 'btn']) ?>
-
+                    </div>
+                  </div>
+                 
         <?php endforeach; ?>
    <div class="col-lg-9">
        <?php   echo LinkPager::widget([

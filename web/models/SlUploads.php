@@ -19,6 +19,7 @@ use Yii;
  */
 class SlUploads extends \yii\db\ActiveRecord
 {
+    public $file;
     /**
      * @inheritdoc
      */
@@ -35,7 +36,8 @@ class SlUploads extends \yii\db\ActiveRecord
         return [
             [['fullpath'], 'required'],
             [['fullpath'], 'string', 'max' => 255],
-            [['fullpath'], 'unique']
+            [['fullpath'], 'unique'],
+            [['file'], 'file'],
         ];
     }
 
@@ -47,6 +49,7 @@ class SlUploads extends \yii\db\ActiveRecord
         return [
             'uploadsId' => 'Uploads ID',
             'fullpath' => 'Fullpath',
+            'file' =>'file',
         ];
     }
 

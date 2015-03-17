@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\BlogPostSearch;
 use yii\data\Pagination;
+use app\models\UsersSearch;
 /**
  * TagController implements the CRUD actions for SlBlogTags model.
  */
@@ -55,9 +56,15 @@ class TagController extends Controller
         $models = $searchResult->offset($pages->offset)
         ->limit(10)
         ->all();
+        $i= 0;
+        foreach ($models as $model) {
+            $user = new UsersSearch();
+            $userData[$i++] = $user->getFullName($model->authorId);
+        }
         return $this->render('view', [
             'model' => $models,
             'page' => $pages, 
+            'userData'=> $userData,
         ]);
     }
 
