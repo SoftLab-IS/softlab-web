@@ -19,8 +19,6 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "2amigos/yii2-ckeditor-widget": "*",
-        "letyii/yii2-tinymce": "dev-master",
-        "mihaildev/yii2-ckeditor": "*",
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-widget-fileinput": "*",
         "2amigos/yii2-file-upload-widget": "*"
